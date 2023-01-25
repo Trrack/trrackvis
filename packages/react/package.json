@@ -1,6 +1,6 @@
 {
-  "name": "@trrackvis/react",
-  "version": "0.0.6",
+  "name": "@trrack/vis-react",
+  "version": "0.0.1",
   "peerDependencies": {
     "@trrack/core": "^0.0.6",
     "d3": "^7.8.0",
