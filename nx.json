@@ -1,9 +1,4 @@
 {
-  "extends": "nx/presets/npm.json",
-  "$schema": "./node_modules/nx/schemas/nx-schema.json",
-  "cli": {
-    "packageManager": "yarn"
-  },
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/nx-cloud",
@@ -17,6 +12,16 @@
         ],
         "accessToken": "MzVlYTA2MDEtZDZhZi00ZjY4LTk4OWUtYzkxNGNjZWM4YWJlfHJlYWQtd3JpdGU="
       }
+    }
+  },
+  "extends": "nx/presets/npm.json",
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "cli": {
+    "packageManager": "yarn"
+  },
+  "targetDefaults": {
+    "test": {
+      "inputs": ["default", "^default"]
     }
   }
 }
