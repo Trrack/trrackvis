@@ -51,6 +51,7 @@
     "@nrwl/react": "15.6.2",
     "@nrwl/storybook": "15.6.2",
     "@nrwl/web": "15.6.2",
+    "@nrwl/webpack": "15.6.2",
     "@nrwl/workspace": "15.6.2",
     "@reduxjs/toolkit": "1.9.0",
     "@storybook/addon-essentials": "^6.5.15",
