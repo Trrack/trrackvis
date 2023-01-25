@@ -45,6 +45,6 @@ jobs:
 
       - name: Test
         run: |
-          RUN=CI yarn nx affected --target=test --all --parallel 5
-          yarn nx affected --target=lint --all
-          yarn nx affected --target=build --all --prod
+          RUN=CI yarn nx affected --target=test --parallel 5
+          yarn nx affected --target=lint
+          yarn nx affected --target=build --prod
