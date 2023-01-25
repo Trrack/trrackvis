@@ -17,7 +17,7 @@ jobs:
           token: ${{ secrets.CI_REPOSITORY_ACCESS_TOKEN }}
 
       - name: Track main
-        run: git branch --track main origin/main
+        run: git branch --track main origin/main || echo "Already done"
 
       - name: Setup LTS Node
         uses: actions/setup-node@v3
