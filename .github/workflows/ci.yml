@@ -45,6 +45,7 @@ jobs:
 
       - name: Test
         run: |
+          git branch --track main origin/main
           RUN=CI yarn nx affected --target=test --parallel 5
           yarn nx affected --target=lint
           yarn nx affected --target=build --prod
