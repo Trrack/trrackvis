@@ -11,14 +11,15 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
-      - name: Setup NodeJS 14
-        uses: actions/setup-node@v1
+      - name: Setup LTS Node
+        uses: actions/setup-node@v3
         with:
-          node-version: 14
+          node-version: 'lts/*'
+          cache: 'yarn'
 
       - name: Install yarn
         run: npm install -g yarn
@@ -44,6 +45,6 @@ jobs:
 
       - name: Test
         run: |
-          RUN=CI yarn nx run-many --target=test --all --parallel 5
-          yarn nx run-many --target=lint --all
-          yarn nx run-many --target=build --all --prod
+          RUN=CI yarn nx affected --target=test --all --parallel 5
+          yarn nx affected --target=lint --all
+          yarn nx affected --target=build --all --prod
