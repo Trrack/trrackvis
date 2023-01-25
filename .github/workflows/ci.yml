@@ -14,6 +14,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
+        run: git branch --track main origin/main
 
       - name: Setup LTS Node
         uses: actions/setup-node@v3
@@ -45,7 +46,6 @@ jobs:
 
       - name: Test
         run: |
-          git branch --track main origin/main
           RUN=CI yarn nx affected --target=test --parallel 5
           yarn nx affected --target=lint
           yarn nx affected --target=build --prod

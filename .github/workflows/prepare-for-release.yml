@@ -15,21 +15,22 @@ jobs:
         with:
           fetch-depth: 0
           token: ${{ secrets.CI_REPOSITORY_ACCESS_TOKEN }}
+        run: git branch --track main origin/main
 
-      - name: Setup NodeJS 14
-        uses: actions/setup-node@v1
+      - name: Setup LTS Node
+        uses: actions/setup-node@v3
         with:
-          node-version: 14
+          node-version: 'lts/*'
 
       - name: Install yarn
         run: npm install -g yarn
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
+        run: echo "dir=$(yarn config get cacheFolder)" >> $GITHUB_OUTPUT
 
       - name: Cache yarn dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         id: yarn-cache
         with:
           path: |
@@ -45,8 +46,8 @@ jobs:
 
       - name: Test
         run: |
-          RUN=CI yarn nx run-many --target=test --all
-          yarn nx run-many --target=lint --all
+          RUN=CI yarn nx affected --target=test --parallel 5
+          yarn nx affected --target=lint
 
       - name: Build components
         run: |
@@ -68,13 +69,13 @@ jobs:
 
       - name: get-npm-version
         id: package-version
-        uses: martinbeentjes/npm-get-version-action@master
+        uses: martinbeentjes/npm-get-version-action@main
 
       - name: Push changes
         run: |
           git fetch
-          git config user.email "vivid.ci@vonage.com"
-          git config user.name "Vivid CI"
+          git config user.email "kirangadhave2@gmail.com"
+          git config user.name "Kiran Gadhave"
           git add --all
           git commit -m "update versions to ${{ steps.package-version.outputs.current-version }}"
           git push
