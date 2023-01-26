@@ -7,7 +7,8 @@
     "commit": "git-cz",
     "nx-clear-cache": "npx nx clear-cache",
     "nx-create-migrations": "nx migrate latest",
-    "nx-migrate": "nx migrate --run-migrations --create-commits && rm -rf migrations.json && git add . && git commit -m 'chore: [nx migration] remove migrations.json'"
+    "nx-migrate": "nx migrate --run-migrations --create-commits && rm -rf migrations.json && git add . && git commit -m 'chore: [nx migration] remove migrations.json'",
+    "eslint:fix": "eslint --fix"
   },
   "private": true,
   "dependencies": {
