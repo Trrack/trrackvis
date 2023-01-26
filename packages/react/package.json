@@ -2,6 +2,8 @@
     "name": "@trrack/vis-react",
     "version": "0.0.0-semantic-release",
     "peerDependencies": {
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
         "@trrack/core": "^0.0.6",
         "d3": "^7.8.0"
     },
@@ -10,6 +12,7 @@
         "@types/d3": "^7.4.0"
     },
     "dependencies": {
+        "@swc/helpers": "0.4.14",
         "fast-json-patch": "^3.1.1",
         "react-spring": "^9.6.1",
         "@fortawesome/free-solid-svg-icons": "^6.2.1",
