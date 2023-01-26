@@ -4,6 +4,9 @@ const srcRoot = `packages/${libraryFolderName}`;
 
 module.exports = {
     extends: 'release.config.base.js',
+    publishConfig: {
+        access: 'public',
+    },
     branches: [
         '+([0-9])?(.{+([0-9]),x}).x',
         'main',
