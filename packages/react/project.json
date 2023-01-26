@@ -79,6 +79,14 @@
                     "quiet": true
                 }
             }
+        },
+        "release": {
+            "executor": "nx:run-commands",
+            "outputs": [],
+            "options": {
+                "command": "npx semantic-release-plus --extends ./packages/react/release.config.js",
+                "parallel": false
+            }
         }
     },
     "tags": []
