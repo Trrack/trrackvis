@@ -1,3 +1,10 @@
+# [1.0.0-beta.2](https://github.com/Trrack/trrackvis/compare/@trrack/vis-react@1.0.0-beta.1...@trrack/vis-react@1.0.0-beta.2) (2023-01-31)
+
+
+### Bug Fixes
+
+* **react:** dummy build to update tag ([221f94e](https://github.com/Trrack/trrackvis/commit/221f94e4f4fff80a61621c2c9970b11634645fdd))
+
 # 1.0.0-beta.1 (2023-01-31)
 
 
