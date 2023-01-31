@@ -1,3 +1,10 @@
+# [1.0.0-beta.3](https://github.com/Trrack/trrackvis/compare/@trrack/vis-react@1.0.0-beta.2...@trrack/vis-react@1.0.0-beta.3) (2023-01-31)
+
+
+### Bug Fixes
+
+* **react:** removed empty test ([5406f23](https://github.com/Trrack/trrackvis/commit/5406f238df3a89c54b77303639583940baa76c61))
+
 # [1.0.0-beta.2](https://github.com/Trrack/trrackvis/compare/@trrack/vis-react@1.0.0-beta.1...@trrack/vis-react@1.0.0-beta.2) (2023-01-31)
 
 
