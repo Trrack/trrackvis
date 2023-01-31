@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { ProvVis } from '../components/ProvVis';
 
 import { initializeTrrack, NodeId, Registry } from '@trrack/core';
@@ -16,14 +16,12 @@ const initialState = {
 
 export type State = typeof initialState;
 
-export function createTrrack() {
-    let taskCounter = 1;
+export function useTrrack() {
     const { registry, actions } = useMemo(() => {
         const reg = Registry.create();
 
         const addTask = reg.register('add-task', (state, task: Task) => {
             state.tasks.push(task);
-            taskCounter += 1;
         });
 
         const removeTask = reg.register('remove-task', (state, task: Task) => {
@@ -61,7 +59,7 @@ export function createTrrack() {
         const t = initializeTrrack({ registry, initialState });
 
         return t;
-    }, []);
+    }, [registry]);
 
     return { trrack, actions };
 }
@@ -76,7 +74,7 @@ export const Graph = ({
     customIcons = false,
 }: {
     trrack: ReturnType<typeof initializeTrrack<State>>;
-    actions: ReturnType<typeof createTrrack>['actions'];
+    actions: ReturnType<typeof useTrrack>['actions'];
     labelSize?: number;
     verticalSpace?: number;
     marginTop?: number;
@@ -113,11 +111,24 @@ export const Graph = ({
                 <div style={{ flex: 10 }}>
                     <Tasks
                         state={trrack.getState(trrack.current)}
-                        deleteCallback={(task) => trrack.apply(`Delete task ${task.id}`, actions.removeTask(task))}
-                        addCallback={() => {
-                            const randomNum = Math.floor(100000 + Math.random() * 900000).toString()
-                            trrack.apply(`Adding task ${randomNum}`, actions.addTask({id: randomNum, complete: false}))}
+                        deleteCallback={(task) =>
+                            trrack.apply(
+                                `Delete task ${task.id}`,
+                                actions.removeTask(task)
+                            )
                         }
+                        addCallback={() => {
+                            const randomNum = Math.floor(
+                                100000 + Math.random() * 900000
+                            ).toString();
+                            trrack.apply(
+                                `Adding task ${randomNum}`,
+                                actions.addTask({
+                                    id: randomNum,
+                                    complete: false,
+                                })
+                            );
+                        }}
                         completeCallback={(task) =>
                             trrack.apply(
                                 task.complete

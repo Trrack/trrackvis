@@ -13,8 +13,7 @@
         "../**/*.spec.ts",
         "../**/*.spec.js",
         "../**/*.spec.tsx",
-        "../**/*.spec.jsx",
-        "jest.config.ts"
+        "../**/*.spec.jsx"
     ],
     "include": [
         "../src/**/*.stories.ts",

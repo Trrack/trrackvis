@@ -1,27 +1,26 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { rootMain } from '../../../.storybook/main';
 
-import type { StorybookConfig, Options } from '@storybook/core-common';
+import { mergeConfig } from 'vite';
+import viteTsConfigPaths from 'vite-tsconfig-paths';
 
-const config: StorybookConfig = {
+const config: any = {
     ...rootMain,
-    core: { ...rootMain.core, builder: 'webpack5' },
+    core: { ...rootMain.core, builder: '@storybook/builder-vite' },
     stories: [
         ...rootMain.stories,
-        '../src/stories/**/*.stories.mdx',
-        '../src/stories/**/*.stories.@(js|jsx|ts|tsx)',
+        '../src/**/*.stories.mdx',
+        '../src/**/*.stories.@(js|jsx|ts|tsx)',
     ],
-    addons: [...(rootMain.addons || []), '@nrwl/react/plugins/storybook'],
-    webpackFinal: async (config, { configType }: Options) => {
-        // apply any global webpack configs that might have been specified in .storybook/main.ts
-        if (rootMain.webpackFinal) {
-            config = await rootMain.webpackFinal(config, {
-                configType,
-            } as Options);
-        }
-
-        // add your own webpack tweaks if needed
-
-        return config;
+    addons: [...(rootMain.addons || [])],
+    async viteFinal(config: any) {
+        return mergeConfig(config, {
+            plugins: [
+                viteTsConfigPaths({
+                    root: '../../../',
+                }),
+            ],
+        });
     },
 };
 

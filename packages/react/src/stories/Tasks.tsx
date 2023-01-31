@@ -1,14 +1,13 @@
 import { faCheck, faTrash, faX } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ActionIcon, Button, Center, Group, Stack, Text } from '@mantine/core';
-import React, { useMemo } from 'react';
-import { State, Task } from './setup';
+import { State, Task } from './useTrrack';
 
 export function Tasks({
     state,
     completeCallback,
     deleteCallback,
-    addCallback
+    addCallback,
 }: {
     state: State;
     completeCallback: (task: Task) => void;
@@ -19,7 +18,7 @@ export function Tasks({
         <Stack spacing={2}>
             {state.tasks.map((task) => {
                 return (
-                    <Group spacing={'xs'}>
+                    <Group key={task.id} spacing={'xs'}>
                         <Text style={{ marginRight: 'auto' }}>{task.id}</Text>
                         <ActionIcon
                             onClick={() => {
@@ -47,7 +46,7 @@ export function Tasks({
                         </ActionIcon>
                         <ActionIcon
                             onClick={() => {
-                                    deleteCallback(task);
+                                deleteCallback(task);
                             }}
                         >
                             <FontAwesomeIcon

@@ -1,6 +1,8 @@
 {
     "name": "@trrack/vis-react",
     "version": "0.0.0-semantic-release",
+    "main": "./index.js",
+    "types": "./index.d.ts",
     "repository": {
         "type": "git",
         "url": "https://github.com/Trrack/trrackvis.git"
@@ -8,10 +10,9 @@
     "dependencies": {
         "@fortawesome/free-solid-svg-icons": "^6.2.1",
         "@fortawesome/react-fontawesome": "^0.2.0",
-        "@swc/helpers": "0.4.14",
-        "fast-json-patch": "^3.1.1",
         "react-spring": "^9.6.1",
-        "uuid": "^8.3.2"
+        "@trrack/core": "^0.0.6",
+        "d3": "^7.8.0"
     },
     "devDependencies": {
         "@types/d3": "^7.4.0",
@@ -23,7 +24,10 @@
         "react": "^18.2.0",
         "react-dom": "^18.2.0"
     },
-    "publishConfig": {
-        "access": "public"
+    "exports": {
+        ".": {
+            "import": "./index.mjs",
+            "require": "./index.js"
+        }
     }
 }

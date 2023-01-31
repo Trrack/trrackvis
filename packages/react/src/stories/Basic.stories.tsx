@@ -1,10 +1,10 @@
 import { Meta } from '@storybook/react';
 import React from 'react';
 
-import { createTrrack, Graph } from './setup';
+import { Graph, useTrrack } from './useTrrack';
 
 export const LinearExample: React.FC = () => {
-    const { trrack: t, actions } = createTrrack();
+    const { trrack: t, actions } = useTrrack();
 
     t.apply('Add task', actions.addTask({ id: '1', complete: false }));
     t.apply('Add task', actions.addTask({ id: '2', complete: false }));
@@ -18,7 +18,7 @@ export const LinearExample: React.FC = () => {
 };
 
 export const OneBranch: React.FC = () => {
-    const { trrack: t, actions } = createTrrack();
+    const { trrack: t, actions } = useTrrack();
 
     t.apply('Add task', actions.addTask({ id: '1', complete: false }));
     t.apply('Add task', actions.addTask({ id: '2', complete: false }));
@@ -36,7 +36,7 @@ export const OneBranch: React.FC = () => {
 };
 
 export const Complex: React.FC = () => {
-    const { trrack: t, actions } = createTrrack();
+    const { trrack: t, actions } = useTrrack();
 
     t.apply('Add task', actions.addTask({ id: '1', complete: false }));
     t.apply('Add task', actions.addTask({ id: '2', complete: false }));
@@ -62,7 +62,7 @@ export const Complex: React.FC = () => {
 };
 
 export const LargeGutter: React.FC = () => {
-    const { trrack: t, actions } = createTrrack();
+    const { trrack: t, actions } = useTrrack();
 
     t.apply('Add task', actions.addTask({ id: '1', complete: false }));
     t.apply('Add task', actions.addTask({ id: '2', complete: false }));
@@ -88,7 +88,7 @@ export const LargeGutter: React.FC = () => {
 };
 
 export const LargeVertSpace: React.FC = () => {
-    const { trrack: t, actions } = createTrrack();
+    const { trrack: t, actions } = useTrrack();
 
     t.apply('Add task', actions.addTask({ id: '1', complete: false }));
     t.apply('Add task', actions.addTask({ id: '2', complete: false }));
@@ -110,11 +110,15 @@ export const LargeVertSpace: React.FC = () => {
     t.apply('Add task', actions.addTask({ id: '12', complete: false }));
     t.apply('Add task', actions.addTask({ id: '13', complete: false }));
 
-    return t ? <Graph actions={actions} verticalSpace={50} trrack={t} /> : <div></div>;
+    return t ? (
+        <Graph actions={actions} verticalSpace={50} trrack={t} />
+    ) : (
+        <div></div>
+    );
 };
 
 export const VertScrolling: React.FC = () => {
-    const { trrack: t, actions } = createTrrack();
+    const { trrack: t, actions } = useTrrack();
 
     t.apply('Add task', actions.addTask({ id: '1', complete: false }));
     t.apply('Add task', actions.addTask({ id: '2', complete: false }));
@@ -136,11 +140,15 @@ export const VertScrolling: React.FC = () => {
     t.apply('Add task', actions.addTask({ id: '12', complete: false }));
     t.apply('Add task', actions.addTask({ id: '13', complete: false }));
 
-    return t ? <Graph actions={actions} verticalSpace={120} trrack={t} /> : <div></div>;
+    return t ? (
+        <Graph actions={actions} verticalSpace={120} trrack={t} />
+    ) : (
+        <div></div>
+    );
 };
 
 export const LargeMarginTop: React.FC = () => {
-    const { trrack: t, actions } = createTrrack();
+    const { trrack: t, actions } = useTrrack();
 
     t.apply('Add task', actions.addTask({ id: '1', complete: false }));
     t.apply('Add task', actions.addTask({ id: '2', complete: false }));
@@ -162,7 +170,11 @@ export const LargeMarginTop: React.FC = () => {
     t.apply('Add task', actions.addTask({ id: '12', complete: false }));
     t.apply('Add task', actions.addTask({ id: '13', complete: false }));
 
-    return t ? <Graph actions={actions} marginTop={50} trrack={t} /> : <div></div>;
+    return t ? (
+        <Graph actions={actions} marginTop={50} trrack={t} />
+    ) : (
+        <div></div>
+    );
 };
 
 export default {
@@ -170,5 +182,5 @@ export default {
     title: 'Components/Basic',
     parameters: {
         layout: 'fullscreen',
-      },
+    },
 } as Meta;

@@ -1,5 +1,6 @@
+/* eslint-disable no-template-curly-in-string */
 const name = require('./package.json').name;
-const libraryFolderName = 'react';
+const libraryFolderName = require('./project.json').name;
 const srcRoot = `packages/${libraryFolderName}`;
 
 module.exports = {
@@ -11,7 +12,7 @@ module.exports = {
         { name: 'alpha', prerelease: true },
     ],
     pkgRoot: `dist/${srcRoot}`,
-    tagFromat: name + '@${version}',
+    tagFormat: name + '@${version}',
     commitPaths: [`${srcRoot}/*`],
     plugins: [
         '@semantic-release/commit-analyzer',
