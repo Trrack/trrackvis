@@ -7,7 +7,6 @@ import viteTsConfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig({
     cacheDir: '../../node_modules/.vite/react',
-
     plugins: [
         dts({
             tsConfigFilePath: join(__dirname, 'tsconfig.lib.json'),
@@ -32,6 +31,7 @@ export default defineConfig({
     // Configuration for building your library.
     // See: https://vitejs.dev/guide/build.html#library-mode
     build: {
+        sourcemap: true,
         lib: {
             // Could also be a dictionary or array of multiple entry points.
             entry: 'src/index.ts',
