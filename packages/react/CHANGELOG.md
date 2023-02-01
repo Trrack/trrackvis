@@ -1,3 +1,10 @@
+# [1.0.0-beta.6](https://github.com/Trrack/trrackvis/compare/@trrack/vis-react@1.0.0-beta.5...@trrack/vis-react@1.0.0-beta.6) (2023-02-01)
+
+
+### Bug Fixes
+
+* **react:** removed console log ([4f27ad5](https://github.com/Trrack/trrackvis/commit/4f27ad5f8f2b57046216fb61da48cb9bbf68aaa6))
+
 # [1.0.0-beta.5](https://github.com/Trrack/trrackvis/compare/@trrack/vis-react@1.0.0-beta.4...@trrack/vis-react@1.0.0-beta.5) (2023-02-01)
 
 
