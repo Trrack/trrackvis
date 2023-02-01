@@ -1,3 +1,10 @@
+# [1.0.0-beta.4](https://github.com/Trrack/trrackvis/compare/@trrack/vis-react@1.0.0-beta.3...@trrack/vis-react@1.0.0-beta.4) (2023-02-01)
+
+
+### Bug Fixes
+
+* **react:** added sourcemap for library ([7d5d0ed](https://github.com/Trrack/trrackvis/commit/7d5d0ed7c529de36cc13d61f9b80656878533391))
+
 # 1.0.0-alpha.1 (2023-02-01)
 
 ### Bug Fixes
