@@ -1,2 +1,3 @@
-export * from './Tree'
-export * from './ProvVis'
+export * from './ProvVis';
+export * from './ProvVisCreator';
+export * from './Tree';
