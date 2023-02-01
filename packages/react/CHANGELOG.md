@@ -1,3 +1,10 @@
+# [1.0.0-beta.5](https://github.com/Trrack/trrackvis/compare/@trrack/vis-react@1.0.0-beta.4...@trrack/vis-react@1.0.0-beta.5) (2023-02-01)
+
+
+### Features
+
+* **react:** added functions to call from vanilla js ([2aa14aa](https://github.com/Trrack/trrackvis/commit/2aa14aaf6a59523cffdf7ae30c1b24de246d0841))
+
 # [1.0.0-beta.4](https://github.com/Trrack/trrackvis/compare/@trrack/vis-react@1.0.0-beta.3...@trrack/vis-react@1.0.0-beta.4) (2023-02-01)
 
 
