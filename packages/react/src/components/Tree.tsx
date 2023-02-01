@@ -264,12 +264,6 @@ export function Tree<T, S extends string, A extends BaseArtifactType<any>>({
         d3.select<SVGGElement, any>(`#panLayer`).call(zoom as any);
     }, [maxWidth, config, currentNode]);
 
-    console.log(
-        maxHeight,
-        config,
-        (maxHeight + 1) * config.verticalSpace + config.marginTop
-    );
-
     return (
         <div
             style={{
