@@ -17,7 +17,7 @@ const config: any = {
         return mergeConfig(config, {
             plugins: [
                 viteTsConfigPaths({
-                    root: '../../../',
+                    root: '../../',
                 }),
             ],
         });
