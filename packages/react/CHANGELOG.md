@@ -1,3 +1,10 @@
+# [1.0.0-beta.7](https://github.com/Trrack/trrackvis/compare/@trrack/vis-react@1.0.0-beta.6...@trrack/vis-react@1.0.0-beta.7) (2023-02-02)
+
+
+### Bug Fixes
+
+* **react:** downgrading react version ([e4ab765](https://github.com/Trrack/trrackvis/commit/e4ab765c0173481d3675305adeb2eb67513e12f2))
+
 # [1.0.0-beta.6](https://github.com/Trrack/trrackvis/compare/@trrack/vis-react@1.0.0-beta.5...@trrack/vis-react@1.0.0-beta.6) (2023-02-01)
 
 
