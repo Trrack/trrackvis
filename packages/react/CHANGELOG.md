@@ -1,3 +1,17 @@
+# [1.0.0-alpha.2](https://github.com/Trrack/trrackvis/compare/@trrack/vis-react@1.0.0-alpha.1...@trrack/vis-react@1.0.0-alpha.2) (2023-02-03)
+
+
+### Bug Fixes
+
+* **react:** downgrading react version ([e4ab765](https://github.com/Trrack/trrackvis/commit/e4ab765c0173481d3675305adeb2eb67513e12f2))
+* **react:** removed console log ([4f27ad5](https://github.com/Trrack/trrackvis/commit/4f27ad5f8f2b57046216fb61da48cb9bbf68aaa6))
+* **react:** upgraded @trrack/core and fixed react ([b9fe44d](https://github.com/Trrack/trrackvis/commit/b9fe44dd251189e074ab9352449c00c739787394))
+
+
+### Features
+
+* **react:** added functions to call from vanilla js ([2aa14aa](https://github.com/Trrack/trrackvis/commit/2aa14aaf6a59523cffdf7ae30c1b24de246d0841))
+
 # [1.0.0-beta.7](https://github.com/Trrack/trrackvis/compare/@trrack/vis-react@1.0.0-beta.6...@trrack/vis-react@1.0.0-beta.7) (2023-02-02)
 
 
