@@ -3,54 +3,45 @@
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
     "sourceRoot": "packages/react/src",
     "projectType": "library",
+    "tags": [],
     "targets": {
-        "build": {
-            "executor": "@nrwl/js:swc",
-            "outputs": ["{options.outputPath}"],
-            "options": {
-                "outputPath": "dist/packages/react",
-                "main": "packages/react/src/index.ts",
-                "tsConfig": "packages/react/tsconfig.lib.json",
-                "assets": ["packages/react/*.md"]
-            }
-        },
-        "publish": {
-            "executor": "nx:run-commands",
-            "options": {
-                "command": "node tools/scripts/publish.mjs react {args.ver} {args.tag}"
-            },
-            "dependsOn": [
-                {
-                    "projects": "self",
-                    "target": "build"
-                }
-            ]
-        },
         "lint": {
             "executor": "@nrwl/linter:eslint",
             "outputs": ["{options.outputFile}"],
             "options": {
-                "lintFilePatterns": ["packages/react/**/*.ts"]
+                "lintFilePatterns": ["packages/react/**/*.{ts,tsx,js,jsx}"]
+            }
+        },
+        "build": {
+            "executor": "@nrwl/vite:build",
+            "outputs": ["{options.outputPath}"],
+            "defaultConfiguration": "production",
+            "options": {
+                "outputPath": "dist/packages/react"
+            },
+            "configurations": {
+                "development": {
+                    "mode": "development"
+                },
+                "production": {
+                    "mode": "production"
+                }
             }
         },
         "test": {
-            "executor": "@nrwl/jest:jest",
-            "outputs": ["{workspaceRoot}/coverage/packages/react"],
+            "executor": "@nrwl/vite:test",
+            "outputs": ["coverage/packages/react"],
             "options": {
-                "jestConfig": "packages/react/jest.config.ts",
-                "passWithNoTests": true
+                "passWithNoTests": true,
+                "reportsDirectory": "../../coverage/packages/react"
             }
         },
-        "version": {
-            "executor": "@jscutlery/semver:version",
+        "release": {
+            "executor": "nx:run-commands",
+            "outputs": [],
             "options": {
-                "preset": "conventional"
-            }
-        },
-        "deploy": {
-            "executor": "ngx-deploy-npm:deploy",
-            "options": {
-                "access": "public"
+                "command": "npx semantic-release-plus --extends ./packages/react/release.config.js",
+                "parallel": false
             }
         },
         "storybook": {
@@ -58,7 +49,8 @@
             "options": {
                 "uiFramework": "@storybook/react",
                 "port": 4400,
-                "configDir": "packages/react/.storybook"
+                "configDir": "packages/react/.storybook",
+                "openssl-legacy-provider": true
             },
             "configurations": {
                 "ci": {
@@ -80,6 +72,5 @@
                 }
             }
         }
-    },
-    "tags": []
+    }
 }

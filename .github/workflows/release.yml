@@ -1,9 +1,15 @@
-name: Test and Build
+name: Release
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [main, alpha, beta]
+
+env:
+  HUSKY: 0
 
 jobs:
-  build-test:
+  release:
+    name: Release
     runs-on: ubuntu-latest
 
     steps:
@@ -20,6 +26,13 @@ jobs:
         with:
           node-version: 'lts/*'
           cache: 'yarn'
+
+      - name: 'Derive appropriate SHAs for base and head for `nx affected` commands'
+        uses: nrwl/nx-set-shas@v3
+
+      - run: |
+          echo "BASE: ${{ env.NX_BASE }}"
+          echo "HEAD: ${{ env.NX_HEAD }}"
 
       - name: Install yarn
         run: npm install -g yarn
@@ -43,8 +56,14 @@ jobs:
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn install
 
-      - name: Test
+      - name: Build
         run: |
-          RUN=CI yarn nx affected --target=test --parallel 5
-          yarn nx affected --target=lint
-          yarn nx affected --target=build --prod
+          RUN=CI yarn run build-affected-libs
+
+      - name: Release
+        if: ${{ success() && (github.event_name != 'pull_request' || github.event.action == 'closed' && github.event.pull_request.merged == true) }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.TRRACK_GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          RUN=CI yarn run release

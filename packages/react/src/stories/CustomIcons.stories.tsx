@@ -1,10 +1,10 @@
 import { Meta } from '@storybook/react';
 import React from 'react';
 
-import { createTrrack, Graph } from './setup';
+import { Graph, useTrrack } from './useTrrack';
 
 export const LinearExample: React.FC = () => {
-    const { trrack: t, actions } = createTrrack();
+    const { trrack: t, actions } = useTrrack();
 
     t.apply('Add task', actions.addTask({ id: '1', complete: false }));
     t.apply('Add task', actions.addTask({ id: '2', complete: false }));
@@ -18,7 +18,7 @@ export const LinearExample: React.FC = () => {
 };
 
 export const OneBranch: React.FC = () => {
-    const { trrack: t, actions } = createTrrack();
+    const { trrack: t, actions } = useTrrack();
 
     t.apply('Add task', actions.addTask({ id: '1', complete: false }));
     t.apply('Add task', actions.addTask({ id: '2', complete: false }));
@@ -36,11 +36,11 @@ export const OneBranch: React.FC = () => {
 };
 
 export const Complex: React.FC = () => {
-    const { trrack: t, actions } = createTrrack();
+    const { trrack: t, actions } = useTrrack();
 
     t.apply('Add task', actions.addTask({ id: '1', complete: false }));
     t.apply('Add task', actions.addTask({ id: '2', complete: false }));
-    t.apply('Add task', actions.addTask({ id: '3' , complete: false}));
+    t.apply('Add task', actions.addTask({ id: '3', complete: false }));
     t.apply('Add task', actions.addTask({ id: '4', complete: false }));
     t.apply('Add task', actions.addTask({ id: '5', complete: false }));
     t.undo();

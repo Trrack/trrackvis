@@ -1,13 +1,21 @@
-import { faCheck, faSquarePlus, faTrash, faX } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React from 'react'
-import { IconConfig } from '../../utils/IconConfig'
+import {
+    faCheck,
+    faSquarePlus,
+    faTrash,
+    faX,
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { IconConfig } from '../../utils/IconConfig';
 
-import {Task} from '../setup'
+import { Task } from '../useTrrack';
 
-export const iconConfig: IconConfig<{
-    tasks: Task[]
-}, string, any>  = {
+export const iconConfig: IconConfig<
+    {
+        tasks: Task[];
+    },
+    string,
+    any
+> = {
     'add-task': {
         glyph: () => (
             <g>
@@ -17,7 +25,6 @@ export const iconConfig: IconConfig<{
                         fixedWidth
                         width={15}
                         height={15}
-
                         icon={faSquarePlus}
                         color="gray"
                     />
@@ -60,7 +67,6 @@ export const iconConfig: IconConfig<{
                         fixedWidth
                         width={15}
                         height={15}
-
                         icon={faSquarePlus}
                         color="gray"
                     />
@@ -75,7 +81,6 @@ export const iconConfig: IconConfig<{
                         fixedWidth
                         width={17}
                         height={17}
-
                         icon={faSquarePlus}
                         color="gray"
                     />
@@ -92,7 +97,6 @@ export const iconConfig: IconConfig<{
                         fixedWidth
                         width={15}
                         height={15}
-
                         icon={faTrash}
                         color="gray"
                     />
@@ -135,7 +139,6 @@ export const iconConfig: IconConfig<{
                         fixedWidth
                         width={15}
                         height={15}
-
                         icon={faTrash}
                         color="gray"
                     />
@@ -150,7 +153,6 @@ export const iconConfig: IconConfig<{
                         fixedWidth
                         width={17}
                         height={17}
-
                         icon={faTrash}
                         color="gray"
                     />
@@ -167,7 +169,6 @@ export const iconConfig: IconConfig<{
                         fixedWidth
                         width={15}
                         height={15}
-
                         icon={faCheck}
                         color="gray"
                     />
@@ -210,7 +211,6 @@ export const iconConfig: IconConfig<{
                         fixedWidth
                         width={15}
                         height={15}
-
                         icon={faCheck}
                         color="gray"
                     />
@@ -225,7 +225,6 @@ export const iconConfig: IconConfig<{
                         fixedWidth
                         width={17}
                         height={17}
-
                         icon={faCheck}
                         color="gray"
                     />
@@ -242,7 +241,6 @@ export const iconConfig: IconConfig<{
                         fixedWidth
                         width={15}
                         height={15}
-
                         icon={faX}
                         color="gray"
                     />
@@ -285,7 +283,6 @@ export const iconConfig: IconConfig<{
                         fixedWidth
                         width={15}
                         height={15}
-
                         icon={faX}
                         color="gray"
                     />
@@ -300,7 +297,6 @@ export const iconConfig: IconConfig<{
                         fixedWidth
                         width={17}
                         height={17}
-
                         icon={faX}
                         color="gray"
                     />
@@ -308,4 +304,4 @@ export const iconConfig: IconConfig<{
             </g>
         ),
     },
-}
+};

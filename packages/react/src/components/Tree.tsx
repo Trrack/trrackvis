@@ -1,13 +1,12 @@
 import { BaseArtifactType, NodeId, ProvenanceNode } from '@trrack/core';
-import React, { useEffect, useMemo, useState } from 'react';
 import * as d3 from 'd3';
+import { useEffect, useMemo, useState } from 'react';
+import { animated, easings, useSpring } from 'react-spring';
 import { AnimatedIcon } from './AnimatedIcon';
 import { AnimatedLine } from './AnimatedLine';
-import { ProvVisConfig } from './ProvVis';
 import { NodeDescription } from './NodeDescription';
+import { ProvVisConfig } from './ProvVis';
 import { StratifiedMap } from './useComputeNodePosition';
-import { IconLegend } from './IconLegend';
-import { useSpring, animated, easings } from 'react-spring';
 
 // TODOs:
 // Bookmarking doing something
@@ -31,8 +30,8 @@ export function Tree<T, S extends string, A extends BaseArtifactType<any>>({
     const [xPan, setXPan] = useState<number>(0);
 
     useEffect(() => {
-      setXPan(0)
-    }, [currentNode])
+        setXPan(0);
+    }, [currentNode]);
 
     const maxWidth = useMemo(() => {
         return Math.max(
@@ -139,7 +138,7 @@ export function Tree<T, S extends string, A extends BaseArtifactType<any>>({
                         depth={node.depth}
                         node={node.data}
                         currentNode={currentNode}
-                        onClick={() => config.changeCurrent(node.id)}
+                        onClick={() => config.changeCurrent(node.id!)}
                         isHover={node.id === hoverNode}
                         setHover={(currNode: NodeId | null) =>
                             setHoverNode(currNode)
@@ -177,8 +176,8 @@ export function Tree<T, S extends string, A extends BaseArtifactType<any>>({
 
             return (
                 <AnimatedLine
-                    key={link.source.id + link.target.id}
-                    uniqueKey={link.source.id + link.target.id}
+                    key={link.source.id! + link.target.id!}
+                    uniqueKey={link.source.id! + link.target.id!}
                     parentNode={link.source}
                     nodes={nodes}
                     x1Width={sourceWidth}
@@ -196,7 +195,7 @@ export function Tree<T, S extends string, A extends BaseArtifactType<any>>({
                 />
             );
         });
-    }, [links, config]);
+    }, [links, config, maxWidth, nodes]);
 
     // render icons for every node
     const nodeIcons = useMemo(() => {
@@ -204,14 +203,14 @@ export function Tree<T, S extends string, A extends BaseArtifactType<any>>({
             return (
                 <AnimatedIcon
                     key={node.id}
-                    width={node.width}
+                    width={node.width!}
                     depth={node.depth}
                     onClick={() => {
                         // this if is just to avoid some annoying hovers that would flash quickly when you switched nodes
                         if (node.width !== 0) {
                             setHoverNode(null);
                         }
-                        config.changeCurrent(node.id);
+                        config.changeCurrent(node.id!);
                     }}
                     nodes={nodes}
                     config={config}
@@ -231,9 +230,8 @@ export function Tree<T, S extends string, A extends BaseArtifactType<any>>({
                 />
             );
         });
-    }, [nodes, currentNode, config, hoverNode, colorMap]);
+    }, [nodes, currentNode, config, hoverNode, colorMap, maxWidth]);
 
-    d3.ZoomTransform
     // // apply zoom/panning
     useEffect(() => {
         const zoom = d3
@@ -257,8 +255,7 @@ export function Tree<T, S extends string, A extends BaseArtifactType<any>>({
             setXPan(transform.x);
         });
 
-
-        const svg = d3.select<SVGGElement, any>(`#panLayer`)
+        const svg = d3.select<SVGGElement, any>(`#panLayer`);
 
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
@@ -290,7 +287,7 @@ export function Tree<T, S extends string, A extends BaseArtifactType<any>>({
                         height: `${
                             (maxHeight + 1) * config.verticalSpace +
                             config.marginTop
-                        }`,
+                        }px`,
                         width: `${
                             config.nodeWidthShown * config.gutter +
                             config.marginLeft +
@@ -298,9 +295,7 @@ export function Tree<T, S extends string, A extends BaseArtifactType<any>>({
                         }px`,
                     }}
                 >
-                    <animated.g
-                        {...svgPanAnimation}
-                    >
+                    <animated.g {...svgPanAnimation}>
                         {edges}
                         {nodeIcons}
                     </animated.g>

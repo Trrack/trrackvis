@@ -16,7 +16,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@trrackvis/react": ["packages/react/src/index.ts"]
+      "@trrack/vis-react": ["packages/react/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
