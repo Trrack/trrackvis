@@ -1,3 +1,10 @@
+# [1.0.0-beta.8](https://github.com/Trrack/trrackvis/compare/@trrack/vis-react@1.0.0-beta.7...@trrack/vis-react@1.0.0-beta.8) (2023-02-03)
+
+
+### Bug Fixes
+
+* **react:** upgraded @trrack/core and fixed react ([b9fe44d](https://github.com/Trrack/trrackvis/commit/b9fe44dd251189e074ab9352449c00c739787394))
+
 # [1.0.0-alpha.2](https://github.com/Trrack/trrackvis/compare/@trrack/vis-react@1.0.0-alpha.1...@trrack/vis-react@1.0.0-alpha.2) (2023-02-03)
 
 
