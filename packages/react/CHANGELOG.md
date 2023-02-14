@@ -1,3 +1,10 @@
+## [1.0.1-alpha.1](https://github.com/Trrack/trrackvis/compare/@trrack/vis-react@1.0.0...@trrack/vis-react@1.0.1-alpha.1) (2023-02-14)
+
+
+### Bug Fixes
+
+* **react:** fixing emotion error ([bc22bb9](https://github.com/Trrack/trrackvis/commit/bc22bb940b99f282eaa013acc115c15d6092514b))
+
 # 1.0.0 (2023-02-03)
 
 
