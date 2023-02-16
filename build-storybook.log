@@ -1,0 +1,62 @@
+
+> nx run react:build-storybook --output-dir /tmp/chromatic--437316-yFlRXpb5eO5h
+
+
+>  NX  ui framework: @storybook/react
+
+
+>  NX  Storybook builder starting ...
+
+info => Cleaning outputDir: /tmp/chromatic--437316-yFlRXpb5eO5h
+info => Loading presets
+info => Compiling manager..
+vite v4.1.1 building for production...
+transforming...
+Use of eval in "node_modules/telejson/dist/esm/index.js" is strongly discouraged as it poses security risks and may cause issues with minification.
+Use of eval in "node_modules/telejson/dist/esm/index.js" is strongly discouraged as it poses security risks and may cause issues with minification.
+Use of eval in "node_modules/@storybook/components/dist/esm/index-681e4b07.js" is strongly discouraged as it poses security risks and may cause issues with minification.
+✓ 2582 modules transformed.
+Generated an empty chunk: "react-dom-client-placeholder".
+rendering chunks...
+info => Manager built (31 s)
+computing gzip size...
+../../../../../../tmp/chromatic--437316-yFlRXpb5eO5h/iframe.html                                            14.00 kB
+../../../../../../tmp/chromatic--437316-yFlRXpb5eO5h/assets/react-dom-client-placeholder-4ed993c7.js         0.07 kB │ gzip:   0.09 kB │ map:     0.12 kB
+../../../../../../tmp/chromatic--437316-yFlRXpb5eO5h/assets/es.string.from-code-point-26b3d58f.js            0.61 kB │ gzip:   0.45 kB │ map:     2.22 kB
+../../../../../../tmp/chromatic--437316-yFlRXpb5eO5h/assets/es.regexp.flags-7705d705.js                      0.72 kB │ gzip:   0.50 kB │ map:     2.78 kB
+../../../../../../tmp/chromatic--437316-yFlRXpb5eO5h/assets/jsx-runtime-d871cd83.js                          1.23 kB │ gzip:   0.76 kB │ map:     2.42 kB
+../../../../../../tmp/chromatic--437316-yFlRXpb5eO5h/assets/es.number.is-integer-d1655b29.js                 1.62 kB │ gzip:   0.93 kB │ map:     8.89 kB
+../../../../../../tmp/chromatic--437316-yFlRXpb5eO5h/assets/renderDocs-d25071f6.js                           2.86 kB │ gzip:   1.41 kB │ map:     9.83 kB
+../../../../../../tmp/chromatic--437316-yFlRXpb5eO5h/assets/GlobalScrollAreaStyles-8793ce4a-910788c0.js     10.55 kB │ gzip:   2.42 kB │ map:    20.91 kB
+../../../../../../tmp/chromatic--437316-yFlRXpb5eO5h/assets/index-2acd28d0.js                               30.57 kB │ gzip:   9.98 kB │ map:   134.64 kB
+../../../../../../tmp/chromatic--437316-yFlRXpb5eO5h/assets/Color-f953d088-48f0ffc7.js                      34.41 kB │ gzip:  13.06 kB │ map:   133.97 kB
+../../../../../../tmp/chromatic--437316-yFlRXpb5eO5h/assets/WithTooltip-167e9982-9e433f06.js                41.13 kB │ gzip:  13.86 kB │ map:   181.33 kB
+../../../../../../tmp/chromatic--437316-yFlRXpb5eO5h/assets/index-e2f552b5.js                               60.90 kB │ gzip:  22.26 kB │ map:   274.26 kB
+../../../../../../tmp/chromatic--437316-yFlRXpb5eO5h/assets/OverlayScrollbars-1355f44c-cf1642e8.js          64.67 kB │ gzip:  27.47 kB │ map:   443.92 kB
+../../../../../../tmp/chromatic--437316-yFlRXpb5eO5h/assets/es.number.to-fixed-e1c976b3.js                  70.85 kB │ gzip:  29.93 kB │ map:   364.82 kB
+../../../../../../tmp/chromatic--437316-yFlRXpb5eO5h/assets/es.number.is-nan-69484765.js                    92.11 kB │ gzip:  35.18 kB │ map:   430.49 kB
+../../../../../../tmp/chromatic--437316-yFlRXpb5eO5h/assets/syntaxhighlighter-b07b042a-9c57c9a1.js         117.30 kB │ gzip:  48.85 kB │ map:   468.52 kB
+../../../../../../tmp/chromatic--437316-yFlRXpb5eO5h/assets/index-ce8a3a47.js                              126.62 kB │ gzip:  40.66 kB │ map:   300.88 kB
+../../../../../../tmp/chromatic--437316-yFlRXpb5eO5h/assets/index-681e4b07-1163b37f.js                     389.98 kB │ gzip: 116.75 kB │ map:   815.35 kB
+../../../../../../tmp/chromatic--437316-yFlRXpb5eO5h/assets/formatter-0d5cb0eb-687e95cd.js                 742.35 kB │ gzip: 239.79 kB │ map: 1,797.73 kB
+../../../../../../tmp/chromatic--437316-yFlRXpb5eO5h/assets/iframe-ef28a10e.js                           1,134.79 kB │ gzip: 313.19 kB │ map: 4,339.59 kB
+
+(!) Some chunks are larger than 500 kBs after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+info => Output directory: /tmp/chromatic--437316-yFlRXpb5eO5h
+
+>  NX  Storybook builder finished ...
+
+
+>  NX  Storybook files available in /tmp/chromatic--437316-yFlRXpb5eO5h
+
+
+ 
+
+ >  NX   Successfully ran target build-storybook for project react
+
+
+   View logs and investigate cache misses at https://nx.app/runs/8WAF6hQyEd
+
