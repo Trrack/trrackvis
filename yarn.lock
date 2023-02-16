@@ -4653,13 +4653,6 @@
   resolved "https://registry.yarnpkg.com/@tootallnate/once/-/once-2.0.0.tgz#f544a148d3ab35801c1f633a7441fd87c2e484bf"
   integrity sha512-XCuKFP5PS55gnMVu3dty8KPatLqUoy/ZYzDzAGCQ8JNFCkLXzmI7vNHCR+XpbZaMWQK/vQubr7PkYq8g470J/A==
 
-"@trrack/core@^0.0.6":
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/@trrack/core/-/core-0.0.6.tgz#871df40dbe896455323aa7334017a25954ab2b1f"
-  integrity sha512-gEyddjOBujq+k8LtNQunSGSgSbCKeq1odBo299MCpAEQSMAz27oZJccOTtc44WF8sn0rmyE8U8bfvzrzfVqSPQ==
-  dependencies:
-    fast-json-patch "^3.1.1"
-
 "@trrack/core@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@trrack/core/-/core-1.0.0.tgz#a3be0096fc895f4794416a9ea31418d11a28ef73"
@@ -7749,10 +7742,10 @@ chownr@^2.0.0:
   resolved "https://registry.yarnpkg.com/chownr/-/chownr-2.0.0.tgz#15bfbe53d2eab4cf70f18a8cd68ebe5b3cb1dece"
   integrity sha512-bIomtDF5KGpdogkLd9VspvFzk9KfpyyGlS8YFVZl7TGPBHL5snIOnxeshwVgPteQ9b4Eydl+pVbIyE1DcvCWgQ==
 
-chromatic@^6.14.0:
-  version "6.15.0"
-  resolved "https://registry.yarnpkg.com/chromatic/-/chromatic-6.15.0.tgz#0a1c82a5576ca418bc70ad2a915bcdda3607d22c"
-  integrity sha512-cdB9ar8zLLpqJHgHH70iWnNXdd4pGCXCqZwSz/z35gNuftlJZKQJewOUnLUe9Mu6pdxKCS/aKVPfpDwzdWvslQ==
+chromatic@^6.17.0:
+  version "6.17.0"
+  resolved "https://registry.yarnpkg.com/chromatic/-/chromatic-6.17.0.tgz#c7a1c15262e748abd9e2bc7247653974e6eb2ea0"
+  integrity sha512-0CYJOwAAHrcD0kXqMDvZql7wih+IO7A7E8hdCRotC0cmfHK8gOFWK6ajUsZUVwrr2zF6IFSJ23wsMLuaZxqSlw==
   dependencies:
     "@discoveryjs/json-ext" "^0.5.7"
     "@types/webpack-env" "^1.17.0"
