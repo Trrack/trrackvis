@@ -10,7 +10,9 @@
     "nx-migrate": "nx migrate --run-migrations --create-commits && rm -rf migrations.json && git add . && git commit -m 'chore: [nx migration] remove migrations.json'",
     "eslint:fix": "eslint --fix",
     "build-affected-libs": "nx affected:build --exclude $(nx print-affected --type=app --select=projects)",
-    "release": "nx affected --target=release --exclude $(nx print-affected --type=app --select=projects)"
+    "release": "nx affected --target=release --exclude $(nx print-affected --type=app --select=projects)",
+    "build-storybook": "nx build-storybook react",
+    "chromatic": "npx chromatic --project-token=0819d33a1a7a"
   },
   "private": true,
   "repository": {
@@ -87,7 +89,7 @@
     "@vitest/coverage-c8": "~0.25.8",
     "@vitest/ui": "^0.25.8",
     "babel-loader": "8.1.0",
-    "chromatic": "^6.14.0",
+    "chromatic": "^6.17.0",
     "commitizen": "^4.3.0",
     "cypress": "^12.2.0",
     "eslint": "8.15.0",
