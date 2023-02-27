@@ -72,6 +72,7 @@ export const Graph = ({
     gutter = 25,
     actions,
     customIcons = false,
+    bookmarkNode = null,
 }: {
     trrack: ReturnType<typeof initializeTrrack<State>>;
     actions: ReturnType<typeof useTrrack>['actions'];
@@ -80,6 +81,7 @@ export const Graph = ({
     marginTop?: number;
     gutter?: number;
     customIcons?: boolean;
+    bookmarkNode?: ((n: NodeId) => void) | null;
 }) => {
     const [currNode, setCurrNode] = useState<NodeId>();
 
@@ -145,6 +147,7 @@ export const Graph = ({
                     <ProvVis
                         root={trrack.root.id}
                         config={{
+                            bookmarkNode: bookmarkNode,
                             changeCurrent: (node: NodeId) => trrack.to(node),
                             labelWidth: 100,
                             verticalSpace: verticalSpace,

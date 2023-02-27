@@ -294,6 +294,11 @@ export function Tree<T, S extends string, A extends BaseArtifactType<any>>({
                             config.nodeAndLabelGap
                         }px`,
                     }}
+                    cursor={
+                        maxWidth > config.nodeWidthShown
+                            ? 'ew-resize'
+                            : 'default'
+                    }
                 >
                     <animated.g {...svgPanAnimation}>
                         {edges}
