@@ -220,8 +220,6 @@ export const Annotations: React.FC = () => {
         t.apply('Add task', actions.addTask({ id: '13', complete: false }));
     }, []);
 
-    console.log(annotations);
-
     return t ? (
         <Graph
             actions={actions}
@@ -263,8 +261,6 @@ export const BookmarksAndAnnotations: React.FC = () => {
         t.apply('Add task', actions.addTask({ id: '12', complete: false }));
         t.apply('Add task', actions.addTask({ id: '13', complete: false }));
     }, []);
-
-    console.log(annotations);
 
     return t ? (
         <Graph

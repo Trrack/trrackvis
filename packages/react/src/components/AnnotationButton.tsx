@@ -31,11 +31,12 @@ export function AnnotationButton<S extends string, A>({
         >
             <Popover
                 width={150}
-                withinPortal
                 trapFocus
                 position="bottom"
                 withArrow
+                arrowSize={10}
                 shadow="md"
+                onChange={setAnnotationOpen}
                 opened={annotationOpen}
             >
                 <Popover.Target>

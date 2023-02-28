@@ -9,7 +9,7 @@ import { useSpring, animated, easings } from 'react-spring';
 import { AnnotationButton } from './AnnotationButton';
 import { BookmarkButton } from './BookmarkButton';
 import { ProvVisConfig } from './ProvVis';
-import { Tooltip } from '@mantine/core';
+import { Stack, Tooltip, Text } from '@mantine/core';
 
 export function NodeDescription<
     T,
@@ -100,7 +100,19 @@ export function NodeDescription<
                         openDelay={200}
                         withinPortal={true}
                         withArrow
-                        label={node.label}
+                        color="gray"
+                        multiline
+                        sx={{ maxWidth: '200px' }}
+                        label={
+                            <Stack spacing={0}>
+                                <Text weight={600}>{node.label}</Text>
+                                {config.getAnnotation(node.id).length > 0 ? (
+                                    <Text size="xs">
+                                        {config.getAnnotation(node.id)}
+                                    </Text>
+                                ) : null}
+                            </Stack>
+                        }
                     >
                         <p
                             style={{

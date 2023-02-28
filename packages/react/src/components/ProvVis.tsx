@@ -37,7 +37,7 @@ export interface ProvVisConfig<
 const defaultConfig: ProvVisConfig<any, any, any> = {
     gutter: 25,
     nodeWidthShown: 3,
-    verticalSpace: 50,
+    verticalSpace: 30,
     marginTop: 50,
     marginRight: 40,
     marginLeft: 50,

@@ -66,7 +66,7 @@ export function useTrrack() {
 
 export const Graph = ({
     trrack,
-    verticalSpace = 25,
+    verticalSpace = 30,
     labelSize = 100,
     marginTop = 25,
     gutter = 25,
