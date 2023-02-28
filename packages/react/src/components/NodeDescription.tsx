@@ -78,41 +78,41 @@ export function NodeDescription<
             onMouseEnter={() => setHover(node.id)}
             onMouseLeave={() => setHover(null)}
         >
-            <div
-                style={{
-                    width: `calc(100% - ${config.marginRight}px)`,
-                    display: 'flex',
-                    flexDirection: 'row',
-                }}
+            <Tooltip
+                position="top-start"
+                openDelay={200}
+                withinPortal={true}
+                withArrow
+                color="gray"
+                multiline
+                sx={{ maxWidth: '200px' }}
+                label={
+                    <Stack spacing={0}>
+                        <Text weight={600}>{node.label}</Text>
+                        {config.getAnnotation(node.id).length > 0 ? (
+                            <Text size="xs">
+                                {config.getAnnotation(node.id)}
+                            </Text>
+                        ) : null}
+                    </Stack>
+                }
             >
                 <div
                     style={{
-                        alignItems: 'start',
-                        justifyContent: 'center',
+                        width: `calc(100% - ${config.marginRight}px)`,
                         display: 'flex',
-                        flexDirection: 'column',
-                        marginRight: 'auto',
-                        width: '100%',
+                        flexDirection: 'row',
                     }}
                 >
-                    <Tooltip
-                        position="top-start"
-                        openDelay={200}
-                        withinPortal={true}
-                        withArrow
-                        color="gray"
-                        multiline
-                        sx={{ maxWidth: '200px' }}
-                        label={
-                            <Stack spacing={0}>
-                                <Text weight={600}>{node.label}</Text>
-                                {config.getAnnotation(node.id).length > 0 ? (
-                                    <Text size="xs">
-                                        {config.getAnnotation(node.id)}
-                                    </Text>
-                                ) : null}
-                            </Stack>
-                        }
+                    <div
+                        style={{
+                            alignItems: 'start',
+                            justifyContent: 'center',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            marginRight: 'auto',
+                            width: '100%',
+                        }}
                     >
                         <p
                             style={{
@@ -125,24 +125,25 @@ export function NodeDescription<
                         >
                             {node.label}
                         </p>
-                    </Tooltip>
-                    {isStateNode(node) ? (
-                        <p
-                            style={{
-                                maxWidth: `${config.labelWidth}px`,
-                                margin: 0,
-                                overflow: 'hidden',
-                                textOverflow: 'ellipsis',
-                                whiteSpace: 'nowrap',
-                                color: 'gray',
-                                fontSize: 10,
-                            }}
-                        >
-                            {config.getAnnotation(node.id)}
-                        </p>
-                    ) : null}
+
+                        {isStateNode(node) ? (
+                            <p
+                                style={{
+                                    maxWidth: `${config.labelWidth}px`,
+                                    margin: 0,
+                                    overflow: 'hidden',
+                                    textOverflow: 'ellipsis',
+                                    whiteSpace: 'nowrap',
+                                    color: 'gray',
+                                    fontSize: 10,
+                                }}
+                            >
+                                {config.getAnnotation(node.id)}
+                            </p>
+                        ) : null}
+                    </div>
                 </div>
-            </div>
+            </Tooltip>
             {config.bookmarkNode !== null &&
             (isHover || isAnnotationOpen || config.isBookmarked(node.id)) ? (
                 <BookmarkButton
