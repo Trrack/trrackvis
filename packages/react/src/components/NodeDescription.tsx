@@ -4,12 +4,11 @@ import {
     NodeId,
     ProvenanceNode,
 } from '@trrack/core';
-import React from 'react';
+import React, { useState } from 'react';
 import { useSpring, animated, easings } from 'react-spring';
 import { AnnotationButton } from './AnnotationButton';
 import { BookmarkButton } from './BookmarkButton';
 import { ProvVisConfig } from './ProvVis';
-import { AnnotationField } from './AnnotationField';
 import { Tooltip } from '@mantine/core';
 
 export function NodeDescription<
@@ -26,8 +25,6 @@ export function NodeDescription<
     isHover,
     setHover,
     colorMap,
-    annotationDepth,
-    setAnnotationDepth,
 }: {
     depth: number;
     yOffset: number;
@@ -38,8 +35,6 @@ export function NodeDescription<
     isHover: boolean;
     setHover: (node: NodeId | null) => void;
     colorMap: Record<S | 'Root', string>;
-    annotationDepth: number | null;
-    setAnnotationDepth: (depth: number | null) => void;
 }) {
     const style = useSpring({
         config: {
@@ -64,42 +59,43 @@ export function NodeDescription<
         },
     });
 
+    const [isAnnotationOpen, setIsAnnotationOpen] = useState<boolean>(false);
+
     return (
-        <>
-            <animated.div
+        <animated.div
+            style={{
+                ...style,
+                cursor: 'pointer',
+                position: 'absolute',
+                display: 'flex',
+                flexDirection: 'row',
+                height: config.verticalSpace,
+                alignContent: 'center',
+                flexWrap: 'wrap',
+                width: `100%`,
+            }}
+            onClick={onClick}
+            onMouseEnter={() => setHover(node.id)}
+            onMouseLeave={() => setHover(null)}
+        >
+            <div
                 style={{
-                    ...style,
-                    cursor: 'pointer',
-                    position: 'absolute',
+                    width: `calc(100% - ${config.marginRight}px)`,
                     display: 'flex',
                     flexDirection: 'row',
-                    height: config.verticalSpace,
-                    alignContent: 'center',
-                    flexWrap: 'wrap',
-                    width: `100%`,
                 }}
-                onClick={onClick}
-                onMouseEnter={() => setHover(node.id)}
-                onMouseLeave={() => setHover(null)}
             >
                 <div
                     style={{
-                        width: `calc(100% - ${config.marginRight}px)`,
+                        alignItems: 'start',
+                        justifyContent: 'center',
                         display: 'flex',
-                        flexDirection: 'row',
+                        flexDirection: 'column',
+                        marginRight: 'auto',
+                        width: '100%',
                     }}
                 >
                     <Tooltip
-                        sx={{
-                            alignItems: 'start',
-                            justifyContent: 'center',
-                            display: 'flex',
-                            flexDirection: 'column',
-                            marginRight: 'auto',
-                            width: '100%',
-                        }}
-                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                        // @ts-ignore
                         position="top-start"
                         openDelay={200}
                         withinPortal={true}
@@ -117,61 +113,41 @@ export function NodeDescription<
                         >
                             {node.label}
                         </p>
-                        {isStateNode(node) ? (
-                            <p
-                                style={{
-                                    maxWidth: `${config.labelWidth}px`,
-                                    margin: 0,
-                                    overflow: 'hidden',
-                                    textOverflow: 'ellipsis',
-                                    whiteSpace: 'nowrap',
-                                    color: 'gray',
-                                }}
-                            >
-                                {config.getAnnotation(node.id)}
-                            </p>
-                        ) : null}
                     </Tooltip>
+                    {isStateNode(node) ? (
+                        <p
+                            style={{
+                                maxWidth: `${config.labelWidth}px`,
+                                margin: 0,
+                                overflow: 'hidden',
+                                textOverflow: 'ellipsis',
+                                whiteSpace: 'nowrap',
+                                color: 'gray',
+                                fontSize: 10,
+                            }}
+                        >
+                            {config.getAnnotation(node.id)}
+                        </p>
+                    ) : null}
                 </div>
-                {config.annotateNode !== null &&
-                (isHover || annotationDepth === depth) ? (
-                    <AnnotationButton
-                        color="cornflowerblue"
-                        isAnnotating={annotationDepth === depth}
-                        onClick={() => setAnnotationDepth(depth)}
-                    />
-                ) : null}
-                {config.bookmarkNode !== null &&
-                (isHover || config.isBookmarked(node.id)) ? (
-                    <BookmarkButton
-                        color={colorMap[node.meta.eventType]}
-                        isBookmarked={config.isBookmarked(node.id)}
-                        onClick={() => config.bookmarkNode?.(node.id)}
-                    />
-                ) : null}
-            </animated.div>
-            {annotationDepth === depth ? (
-                <animated.div
-                    style={{
-                        cursor: 'pointer',
-                        position: 'absolute',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        justifyContent: 'center',
-                        alignItems: 'start',
-                        fontSize: '12px !important',
-                        width: `250px`,
-                        zIndex: 10,
-                        top: style.top.to((num) => num + config.verticalSpace),
-                    }}
-                >
-                    <AnnotationField
-                        config={config}
-                        node={node}
-                        setAnnotationDepth={setAnnotationDepth}
-                    />
-                </animated.div>
+            </div>
+            {config.bookmarkNode !== null &&
+            (isHover || isAnnotationOpen || config.isBookmarked(node.id)) ? (
+                <BookmarkButton
+                    color={colorMap[node.meta.eventType]}
+                    isBookmarked={config.isBookmarked(node.id)}
+                    onClick={() => config.bookmarkNode?.(node.id)}
+                />
             ) : null}
-        </>
+            {config.annotateNode !== null && (isHover || isAnnotationOpen) ? (
+                <AnnotationButton
+                    color="cornflowerblue"
+                    annotationOpen={isAnnotationOpen}
+                    setAnnotationOpen={(b: boolean) => setIsAnnotationOpen(b)}
+                    setAnnotation={(s) => config.annotateNode?.(node.id, s)}
+                    annotation={config.getAnnotation(node.id)}
+                />
+            ) : null}
+        </animated.div>
     );
 }

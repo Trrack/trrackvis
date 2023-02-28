@@ -73,6 +73,9 @@ export const Graph = ({
     actions,
     customIcons = false,
     bookmarkNode = null,
+    annotateNode = null,
+    getAnnotation = () => '',
+    isBookmarked = () => false,
 }: {
     trrack: ReturnType<typeof initializeTrrack<State>>;
     actions: ReturnType<typeof useTrrack>['actions'];
@@ -82,6 +85,9 @@ export const Graph = ({
     gutter?: number;
     customIcons?: boolean;
     bookmarkNode?: ((n: NodeId) => void) | null;
+    annotateNode?: ((n: NodeId, s: string) => void) | null;
+    getAnnotation?: (n: NodeId) => string;
+    isBookmarked?: (n: NodeId) => boolean;
 }) => {
     const [currNode, setCurrNode] = useState<NodeId>();
 
@@ -147,6 +153,9 @@ export const Graph = ({
                     <ProvVis
                         root={trrack.root.id}
                         config={{
+                            isBookmarked: isBookmarked,
+                            annotateNode: annotateNode,
+                            getAnnotation: getAnnotation,
                             bookmarkNode: bookmarkNode,
                             changeCurrent: (node: NodeId) => trrack.to(node),
                             labelWidth: 100,

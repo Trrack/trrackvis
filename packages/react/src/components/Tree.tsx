@@ -9,10 +9,7 @@ import { ProvVisConfig } from './ProvVis';
 import { StratifiedMap } from './useComputeNodePosition';
 
 // TODOs:
-// Bookmarking doing something
 // Annotations doing something
-// Storybooks for each part of config
-// Maybe fill nodes behind your current to signify that they have happened
 
 export function Tree<T, S extends string, A extends BaseArtifactType<any>>({
     nodes,
@@ -26,7 +23,6 @@ export function Tree<T, S extends string, A extends BaseArtifactType<any>>({
     currentNode: NodeId;
 }) {
     const [hoverNode, setHoverNode] = useState<NodeId | null>(null);
-    const [annotationDepth, setAnnotationDepth] = useState<number | null>(null);
     const [xPan, setXPan] = useState<number>(0);
 
     useEffect(() => {
@@ -144,19 +140,11 @@ export function Tree<T, S extends string, A extends BaseArtifactType<any>>({
                             setHoverNode(currNode)
                         }
                         colorMap={colorMap}
-                        setAnnotationDepth={(depth: number | null) => {
-                            if (annotationDepth !== depth) {
-                                setAnnotationDepth(depth);
-                            } else {
-                                setAnnotationDepth(null);
-                            }
-                        }}
-                        annotationDepth={annotationDepth}
                         yOffset={0}
                     />
                 );
             });
-    }, [nodes, currentNode, hoverNode, annotationDepth, colorMap, config]);
+    }, [nodes, currentNode, hoverNode, colorMap, config]);
 
     // render edges for every node
     const edges = useMemo(() => {
