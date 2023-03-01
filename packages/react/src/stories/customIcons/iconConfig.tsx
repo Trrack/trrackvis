@@ -1,9 +1,8 @@
-import {
-    faCheck,
-    faSquarePlus,
-    faTrash,
-    faX,
-} from '@fortawesome/free-solid-svg-icons';
+import { faSquarePlus } from '@fortawesome/free-solid-svg-icons/faSquarePlus';
+import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
+import { faX } from '@fortawesome/free-solid-svg-icons/faX';
+import { faTrash } from '@fortawesome/free-solid-svg-icons/faTrash';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconConfig } from '../../utils/IconConfig';
 

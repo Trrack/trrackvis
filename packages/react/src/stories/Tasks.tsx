@@ -1,4 +1,6 @@
-import { faCheck, faTrash, faX } from '@fortawesome/free-solid-svg-icons';
+import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
+import { faX } from '@fortawesome/free-solid-svg-icons/faX';
+import { faTrash } from '@fortawesome/free-solid-svg-icons/faTrash';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ActionIcon, Button, Center, Group, Stack, Text } from '@mantine/core';
 import { State, Task } from './useTrrack';
