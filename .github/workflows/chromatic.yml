@@ -26,8 +26,4 @@ jobs:
       - name: Publish to Chromatic
         env:
           NODE_OPTIONS: '--openssl-legacy-provider'
-        uses: chromaui/action@v1
-        # Chromatic GitHub Action options
-        with:
-          # 👇 Chromatic projectToken, refer to the manage page to obtain it.
-          projectToken: 0819d33a1a7a
+        run: npm run chromatic
