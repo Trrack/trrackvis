@@ -5,6 +5,7 @@ import { useSpring, animated, easings, useTransition } from 'react-spring';
 import { defaultIcon } from '../utils/IconConfig';
 import { ProvVisConfig } from './ProvVis';
 import { StratifiedMap } from './useComputeNodePosition';
+import { Stack, Tooltip, Text } from '@mantine/core';
 
 export function AnimatedIcon<
     T,
@@ -51,9 +52,12 @@ export function AnimatedIcon<
             })`,
         },
         enter: {
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
-            delay: nodes[node.id].parent?.children.length > 1 ? config.animationDuration / 3 : 0,
+            delay:
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
+                nodes[node.id].parent?.children.length > 1
+                    ? config.animationDuration / 3
+                    : 0,
             opacity: 1,
             transform: `translate(${-width * config.gutter + xOffset} , ${
                 depth * config.verticalSpace + yOffset
@@ -110,7 +114,27 @@ export function AnimatedIcon<
                 }}
                 onMouseOut={() => setHover(null)}
             >
-                {icon}
+                <Tooltip
+                    position="top-start"
+                    openDelay={200}
+                    withinPortal={true}
+                    withArrow
+                    color="gray"
+                    multiline
+                    sx={{ maxWidth: '200px' }}
+                    label={
+                        <Stack spacing={0}>
+                            <Text weight={600}>{node.label}</Text>
+                            {config.getAnnotation(node.id).length > 0 ? (
+                                <Text size="xs">
+                                    {config.getAnnotation(node.id)}
+                                </Text>
+                            ) : null}
+                        </Stack>
+                    }
+                >
+                    {icon}
+                </Tooltip>
             </animated.g>
         );
     });
