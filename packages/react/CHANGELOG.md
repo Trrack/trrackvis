@@ -1,3 +1,13 @@
+# [1.1.0-alpha.1](https://github.com/Trrack/trrackvis/compare/@trrack/vis-react@1.0.1...@trrack/vis-react@1.1.0-alpha.1) (2023-03-01)
+
+
+### Features
+
+* **react:** adding bookmarks and annotations stories and ui ([c33b533](https://github.com/Trrack/trrackvis/commit/c33b533fe2650314779b23bbeded3a588310c2b9))
+* **react:** hiding bookmark/annotations, adding tooltip to label ([4b7fb5c](https://github.com/Trrack/trrackvis/commit/4b7fb5cf37d7c04f7cbaf89ff7758a3cdd21ac43)), closes [#21](https://github.com/Trrack/trrackvis/issues/21) [#22](https://github.com/Trrack/trrackvis/issues/22)
+* **react:** moving tooltip to entire description ([d231636](https://github.com/Trrack/trrackvis/commit/d2316362f94d10d73a64f98280cfc21eab634b5f))
+* **react:** quality of life changes for annotations ([de29954](https://github.com/Trrack/trrackvis/commit/de299547790c8ea91cdbf67d64e094a14235de67))
+
 ## [1.0.1](https://github.com/Trrack/trrackvis/compare/@trrack/vis-react@1.0.0...@trrack/vis-react@1.0.1) (2023-02-14)
 
 
