@@ -9,7 +9,10 @@
 [![license](https://img.shields.io/github/license/trrack/trrackvis?style=plastic)](https://github.com/Trrack/trrackvis/blob/main/LICENSE)
 [![npm latest version](https://img.shields.io/npm/v/@trrack/vis-react?style=plastic)](https://www.npmjs.com/package/@trrack/vis-react)
 [![npm downloads](https://img.shields.io/npm/dt/@trrack/vis-react?style=plastic)](https://www.npmjs.com/package/@trrack/vis-react)
-[![Github Action](https://img.shields.io/github/actions/workflow/status/trrack/trrackvis/release.yml?branch=main)](https://github.com/Trrack/trrackvis/actions/workflows/release.yml?query=branch%3Amain)
+[![github-action-build](https://img.shields.io/github/actions/workflow/status/trrack/trrackvis/release.yml?branch=main)](https://github.com/Trrack/trrackvis/actions/workflows/release.yml?query=branch%3Amain)
+[![storybook](https://img.shields.io/badge/storybook-latest-blueviolet)](https://main--63ee57592a53ae7413d27e43.chromatic.com)
+[![chromatic-library](https://img.shields.io/badge/chromatic--library-latest-ff69b4)](https://www.chromatic.com/library?appId=63ee57592a53ae7413d27e43&branch=main)
+
 
 ## Understand this workspace
 
