@@ -10,6 +10,7 @@
     "nx-migrate": "nx migrate --run-migrations --create-commits && rm -rf migrations.json && git add . && git commit -m 'chore: [nx migration] remove migrations.json'",
     "eslint:fix": "eslint --fix",
     "build-affected-libs": "nx affected:build --exclude $(nx print-affected --type=app --select=projects)",
+    "test-affected-libs": "nx affected --target=test --exclude $(nx print-affected --type=app --select=projects)",
     "release": "nx affected --target=release --exclude $(nx print-affected --type=app --select=projects)",
     "build-storybook": "nx build-storybook react",
     "chromatic": "npx chromatic --project-token=0819d33a1a7a"

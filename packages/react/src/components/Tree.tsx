@@ -1,6 +1,6 @@
 import { BaseArtifactType, NodeId, ProvenanceNode } from '@trrack/core';
 import * as d3 from 'd3';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { animated, easings, useSpring } from 'react-spring';
 import { AnimatedIcon } from './AnimatedIcon';
 import { AnimatedLine } from './AnimatedLine';
@@ -24,7 +24,7 @@ export function Tree<T, S extends string, A extends BaseArtifactType<any>>({
 }) {
     const [hoverNode, setHoverNode] = useState<NodeId | null>(null);
     const [xPan, setXPan] = useState<number>(0);
-
+    const scrollRef = useRef<HTMLDivElement>(null);
     useEffect(() => {
         setXPan(0);
     }, [currentNode]);
@@ -252,8 +252,34 @@ export function Tree<T, S extends string, A extends BaseArtifactType<any>>({
         d3.select<SVGGElement, any>(`#panLayer`).call(zoom as any);
     }, [maxWidth, config, currentNode]);
 
+    const nodeCount = Object.keys(nodes).length;
+
+    useEffect(() => {
+        if (!scrollRef.current) {
+            return;
+        }
+
+        const currNodeHeight = nodes[currentNode].depth * config.verticalSpace;
+        const scrollPos = scrollRef.current.scrollTop;
+        const divHeight = scrollRef.current.clientHeight;
+
+        if (
+            scrollRef.current &&
+            currNodeHeight > scrollPos + divHeight - config.verticalSpace
+        ) {
+            scrollRef.current.scrollTo(
+                0,
+                currNodeHeight -
+                    divHeight +
+                    config.verticalSpace +
+                    config.marginTop
+            );
+        }
+    }, [nodeCount, config.marginTop, config.verticalSpace, nodes, currentNode]);
+
     return (
         <div
+            ref={scrollRef}
             style={{
                 display: 'flex',
                 height: '100%',
