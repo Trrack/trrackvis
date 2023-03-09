@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/Trrack/trrackvis/compare/@trrack/vis-react@1.1.0...@trrack/vis-react@1.2.0) (2023-03-09)
+
+
+### Features
+
+* **react:** scrolling down to the current node ([dc98981](https://github.com/Trrack/trrackvis/commit/dc989810112c6e02239866fc75f22e77d20c1a2e))
+
 # [1.2.0-beta.1](https://github.com/Trrack/trrackvis/compare/@trrack/vis-react@1.1.0...@trrack/vis-react@1.2.0-beta.1) (2023-03-09)
 
 
