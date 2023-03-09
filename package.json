@@ -13,7 +13,7 @@
     "test-affected-libs": "nx affected --target=test --exclude $(nx print-affected --type=app --select=projects)",
     "release": "nx affected --target=release --exclude $(nx print-affected --type=app --select=projects)",
     "build-storybook": "nx build-storybook react",
-    "chromatic": "npx chromatic --project-token=0819d33a1a7a"
+    "chromatic": "npx chromatic --project-token=0819d33a1a7a --exit-once-uploaded --only-changed --trace-changed"
   },
   "private": true,
   "repository": {
