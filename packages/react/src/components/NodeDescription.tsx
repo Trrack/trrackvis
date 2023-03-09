@@ -1,15 +1,15 @@
+import { Stack, Text, Tooltip } from '@mantine/core';
 import {
     BaseArtifactType,
-    isStateNode,
     NodeId,
     ProvenanceNode,
+    isStateNode,
 } from '@trrack/core';
-import React, { useState } from 'react';
-import { useSpring, animated, easings } from 'react-spring';
+import { useState } from 'react';
+import { animated, easings, useSpring } from 'react-spring';
 import { AnnotationButton } from './AnnotationButton';
 import { BookmarkButton } from './BookmarkButton';
 import { ProvVisConfig } from './ProvVis';
-import { Stack, Tooltip, Text } from '@mantine/core';
 
 export function NodeDescription<
     T,
@@ -74,7 +74,9 @@ export function NodeDescription<
                 flexWrap: 'wrap',
                 width: `100%`,
             }}
+            className="node-description"
             onClick={onClick}
+            data-node-id={node.id}
             onMouseEnter={() => setHover(node.id)}
             onMouseLeave={() => setHover(null)}
         >
