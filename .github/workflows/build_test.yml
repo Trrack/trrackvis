@@ -1,9 +1,24 @@
-name: Test and Build
+name: Build -> Test
 
-on: [push, pull_request]
+on:
+  push:
+    branches-ignore:
+      - main
+      - next
+      - alpha
+      - beta
+      - '*.x*'
+  pull_request:
+    branches:
+      - main
+      - next
+      - alpha
+      - beta
+      - '*.x*'
 
 jobs:
   build-test:
+    name: Build -> Test
     runs-on: ubuntu-latest
 
     steps:
@@ -43,8 +58,11 @@ jobs:
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn install
 
+      - name: Build
+        run: |
+          RUN=CI yarn nx affected --target=lint
+          RUN=CI yarn run build-affected-libs
+
       - name: Test
         run: |
           RUN=CI yarn nx affected --target=test --parallel 5
-          yarn nx affected --target=lint
-          yarn nx affected --target=build --prod
