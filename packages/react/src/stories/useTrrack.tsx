@@ -1,7 +1,12 @@
 import { useMemo, useState } from 'react';
-import { ProvVis } from '../components/ProvVis';
+import { ProvVis, ProvVisConfig } from '../components/ProvVis';
 
-import { initializeTrrack, NodeId, Registry } from '@trrack/core';
+import {
+    BaseArtifactType,
+    initializeTrrack,
+    NodeId,
+    Registry,
+} from '@trrack/core';
 import { iconConfig } from './customIcons/iconConfig';
 import { Tasks } from './Tasks';
 
@@ -64,31 +69,30 @@ export function useTrrack() {
     return { trrack, actions };
 }
 
-export const Graph = ({
-    trrack,
-    verticalSpace = 30,
-    labelSize = 100,
-    marginTop = 25,
-    gutter = 25,
-    actions,
-    customIcons = false,
-    bookmarkNode = null,
-    annotateNode = null,
-    getAnnotation = () => '',
-    isBookmarked = () => false,
-}: {
+type GraphProps<T, S extends string, A extends BaseArtifactType<any>> = {
     trrack: ReturnType<typeof initializeTrrack<State>>;
     actions: ReturnType<typeof useTrrack>['actions'];
-    labelSize?: number;
-    verticalSpace?: number;
-    marginTop?: number;
-    gutter?: number;
     customIcons?: boolean;
-    bookmarkNode?: ((n: NodeId) => void) | null;
-    annotateNode?: ((n: NodeId, s: string) => void) | null;
-    getAnnotation?: (n: NodeId) => string;
-    isBookmarked?: (n: NodeId) => boolean;
-}) => {
+    config: Partial<ProvVisConfig<T, S, A>>;
+};
+
+export const Graph = <T, S extends string, A extends BaseArtifactType<any>>({
+    trrack,
+    actions,
+    customIcons = false,
+    config,
+}: GraphProps<T, S, A>) => {
+    const {
+        verticalSpace = 30,
+        labelWidth = 100,
+        marginTop = 25,
+        gutter = 25,
+        bookmarkNode = null,
+        annotateNode = null,
+        getAnnotation = () => '',
+        isBookmarked = () => false,
+    } = config;
+
     const [currNode, setCurrNode] = useState<NodeId>();
 
     trrack.currentChange(() => {
@@ -153,12 +157,13 @@ export const Graph = ({
                     <ProvVis
                         root={trrack.root.id}
                         config={{
+                            ...config,
                             isBookmarked: isBookmarked,
                             annotateNode: annotateNode,
                             getAnnotation: getAnnotation,
                             bookmarkNode: bookmarkNode,
                             changeCurrent: (node: NodeId) => trrack.to(node),
-                            labelWidth: 100,
+                            labelWidth,
                             verticalSpace: verticalSpace,
                             marginTop: marginTop,
                             marginLeft: 15,
