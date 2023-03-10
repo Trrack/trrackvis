@@ -12,7 +12,7 @@
     "build-affected-libs": "nx affected:build --exclude $(nx print-affected --type=app --select=projects)",
     "test-affected-libs": "nx affected --target=test --exclude $(nx print-affected --type=app --select=projects)",
     "release": "nx affected --target=release --exclude $(nx print-affected --type=app --select=projects)",
-    "release-github": "BRANCH=$(git rev-parse --abbrev-ref HEAD) yarn release --dry-run --extends ./packages/react/release.github.config.js --verbose",
+    "release-github": "BRANCH=$(git rev-parse --abbrev-ref HEAD) yarn release --extends ./packages/react/release.github.config.js --verbose",
     "build-storybook": "nx build-storybook react",
     "chromatic": "npx chromatic --project-token=0819d33a1a7a --exit-zero-on-changes --only-changed --trace-changed"
   },

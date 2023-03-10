@@ -79,5 +79,6 @@ jobs:
         env:
           NPM_CONFIG_REGISTRY: https://npm.pkg.github.com
           NODE_AUTH_TOKEN: ${{ secrets.TRRACK_GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.TRRACK_GITHUB_TOKEN }}
         run: |
           RUN=CI yarn run release-github
