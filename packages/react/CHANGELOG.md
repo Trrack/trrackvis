@@ -1,3 +1,10 @@
+## [1.2.2-beta.3](https://github.com/Trrack/trrackvis/compare/@trrack/vis-react@1.2.2-beta.2...@trrack/vis-react@1.2.2-beta.3) (2023-03-10)
+
+
+### Bug Fixes
+
+* **react:** fixed conditional for createRoot ([b6cb038](https://github.com/Trrack/trrackvis/commit/b6cb038b79b84f57a6048727a397254e6ffe85ed))
+
 ## [1.2.2-beta.2](https://github.com/Trrack/trrackvis/compare/@trrack/vis-react@1.2.2-beta.1...@trrack/vis-react@1.2.2-beta.2) (2023-03-10)
 
 
