@@ -1,9 +1,7 @@
 import { initializeTrrack, NodeId } from '@trrack/core';
 import { render } from 'react-dom';
-import { createRoot } from 'react-dom/client';
+import { createRoot, Root } from 'react-dom/client';
 import { ProvVis, ProvVisConfig } from './ProvVis';
-
-console.log(createRoot);
 
 export function ProvVisCreator<
     TrrackInstance extends ReturnType<typeof initializeTrrack> = ReturnType<
@@ -14,6 +12,11 @@ export function ProvVisCreator<
     trrackInstance: TrrackInstance,
     config: Partial<ProvVisConfig<any, any, any>> = {}
 ) {
+    let root: Root | null = null;
+    if (createRoot) {
+        root = createRoot(node);
+    }
+
     const vis = (
         <ProvVis
             root={trrackInstance.root.id}
@@ -27,8 +30,7 @@ export function ProvVisCreator<
     );
 
     function renderTrrack() {
-        if (createRoot) {
-            const root = createRoot(node);
+        if (root) {
             root.render(vis);
         } else {
             render(vis, node);
