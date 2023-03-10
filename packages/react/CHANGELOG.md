@@ -1,3 +1,10 @@
+## [1.2.2-beta.4](https://github.com/Trrack/trrackvis/compare/@trrack/vis-react@1.2.2-beta.3...@trrack/vis-react@1.2.2-beta.4) (2023-03-10)
+
+
+### Bug Fixes
+
+* **react:** fixed ProvVisCreator rendering during update ([3b40a00](https://github.com/Trrack/trrackvis/commit/3b40a007ddb2668ae343a96b4ff327ed54c25d13))
+
 ## [1.2.2-beta.3](https://github.com/Trrack/trrackvis/compare/@trrack/vis-react@1.2.2-beta.2...@trrack/vis-react@1.2.2-beta.3) (2023-03-10)
 
 
