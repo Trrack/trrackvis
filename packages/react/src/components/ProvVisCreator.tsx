@@ -2,10 +2,12 @@ import { initializeTrrack, NodeId } from '@trrack/core';
 import { version } from 'react-dom';
 import { ProvVis, ProvVisConfig } from './ProvVis';
 
-export function ProvVisCreator<
-    TrrackInstance extends ReturnType<typeof initializeTrrack> = ReturnType<
-        typeof initializeTrrack
-    >
+export async function ProvVisCreator<
+    S,
+    E extends string,
+    TrrackInstance extends ReturnType<
+        typeof initializeTrrack<S, E>
+    > = ReturnType<typeof initializeTrrack<S, E>>
 >(
     node: Element,
     trrackInstance: TrrackInstance,
@@ -13,15 +15,15 @@ export function ProvVisCreator<
 ) {
     let renderFn: ((el: JSX.Element) => void) | null = null;
 
-    if (version.startsWith('16')) {
-        import('react-dom').then(({ render }) => {
+    async function setup() {
+        if (version.startsWith('16')) {
+            const { render } = await import('react-dom');
             renderFn = (el: JSX.Element) => render(el, node);
-        });
-    } else {
-        import('react-dom/client').then(({ createRoot }) => {
+        } else {
+            const { createRoot } = await import('react-dom/client');
             const root = createRoot(node);
             renderFn = (el: JSX.Element) => root.render(el);
-        });
+        }
     }
 
     function renderTrrack() {
@@ -39,6 +41,8 @@ export function ProvVisCreator<
 
         if (renderFn) {
             renderFn(vis);
+        } else {
+            setup();
         }
     }
 
