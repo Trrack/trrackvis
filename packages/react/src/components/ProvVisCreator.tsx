@@ -1,5 +1,6 @@
 import { initializeTrrack, NodeId } from '@trrack/core';
-import { version } from 'react-dom';
+import RDOM16 from 'react-dom';
+import RDOM from 'react-dom/client';
 import { ProvVis, ProvVisConfig } from './ProvVis';
 
 export async function ProvVisCreator<
@@ -11,20 +12,10 @@ export async function ProvVisCreator<
 >(
     node: Element,
     trrackInstance: TrrackInstance,
-    config: Partial<ProvVisConfig<any, any, any>> = {}
+    config: Partial<ProvVisConfig<any, any, any>> = {},
+    REACT_16 = false
 ) {
-    let renderFn: ((el: JSX.Element) => void) | null = null;
-
-    async function setup() {
-        if (version.startsWith('16')) {
-            const { render } = await import('react-dom');
-            renderFn = (el: JSX.Element) => render(el, node);
-        } else {
-            const { createRoot } = await import('react-dom/client');
-            const root = createRoot(node);
-            renderFn = (el: JSX.Element) => root.render(el);
-        }
-    }
+    let root: RDOM.Root | null;
 
     function renderTrrack() {
         const vis = (
@@ -39,10 +30,14 @@ export async function ProvVisCreator<
             />
         );
 
-        if (renderFn) {
-            renderFn(vis);
+        if (REACT_16) {
+            RDOM16.render(vis, node);
         } else {
-            setup();
+            if (!root) {
+                root = RDOM.createRoot(node);
+            }
+
+            root.render(vis);
         }
     }
 
