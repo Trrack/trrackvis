@@ -1,3 +1,19 @@
+## [1.2.2](https://github.com/Trrack/trrackvis/compare/@trrack/vis-react@1.2.1...@trrack/vis-react@1.2.2) (2023-03-10)
+
+
+### Bug Fixes
+
+* adding compat to react 16 & react 18 ([4824002](https://github.com/Trrack/trrackvis/commit/4824002b79e24f7dcb250a204b493d36337280fc))
+* **react:** added conditional rendering ([536c2d1](https://github.com/Trrack/trrackvis/commit/536c2d1160a9a18a05953dfad1c4ab38d8546e89))
+* **react:** fixed conditional for createRoot ([b6cb038](https://github.com/Trrack/trrackvis/commit/b6cb038b79b84f57a6048727a397254e6ffe85ed))
+* **react:** fixed createRoot being called multiple times ([1e62f7f](https://github.com/Trrack/trrackvis/commit/1e62f7f96ac43108aa982aff9a926936d8bb8340))
+* **react:** fixed ProvVisCreator rendering during update ([3b40a00](https://github.com/Trrack/trrackvis/commit/3b40a007ddb2668ae343a96b4ff327ed54c25d13))
+* **react:** fixed react, react-dom, @types/react, @types/react-dom version ([586b0a2](https://github.com/Trrack/trrackvis/commit/586b0a2227e8186c7dc955f1ffff8e114666194a))
+* **react:** made config option in ProvVisCreator optional ([f739de3](https://github.com/Trrack/trrackvis/commit/f739de374f7b62a4a04c53ece3d50f53d38ece3b))
+* **react:** updated react dependencies to support semver 16-18 ([6c8f51b](https://github.com/Trrack/trrackvis/commit/6c8f51be70bdb478670d38e0d35df02c6b033fa7))
+* **react:** updated typings for ProvVisCreator fn ([e5b6cd4](https://github.com/Trrack/trrackvis/commit/e5b6cd42c5a7970ab7a9e362aeb498e7d48c4f5c))
+* testing out updated logic ([483ea8d](https://github.com/Trrack/trrackvis/commit/483ea8d955fdc0ce18bbe9f5c2256e6192125fc8))
+
 ## [1.2.2-beta.8](https://github.com/Trrack/trrackvis/compare/@trrack/vis-react@1.2.2-beta.7...@trrack/vis-react@1.2.2-beta.8) (2023-03-10)
 
 
