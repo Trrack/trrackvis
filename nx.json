@@ -26,7 +26,8 @@
     "defaultBase": "main"
   },
   "workspaceLayout": {
-    "libsDir": "packages"
+    "libsDir": "packages",
+    "appsDir": "apps"
   },
   "cli": {
     "packageManager": "yarn"

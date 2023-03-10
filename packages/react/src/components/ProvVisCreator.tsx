@@ -17,19 +17,19 @@ export function ProvVisCreator<
         root = createRoot(node);
     }
 
-    const vis = (
-        <ProvVis
-            root={trrackInstance.root.id}
-            config={{
-                changeCurrent: (id: NodeId) => trrackInstance.to(id),
-                ...config,
-            }}
-            nodeMap={trrackInstance.graph.backend.nodes}
-            currentNode={trrackInstance.current.id}
-        />
-    );
-
     function renderTrrack() {
+        const vis = (
+            <ProvVis
+                root={trrackInstance.root.id}
+                config={{
+                    changeCurrent: (id: NodeId) => trrackInstance.to(id),
+                    ...config,
+                }}
+                nodeMap={trrackInstance.graph.backend.nodes}
+                currentNode={trrackInstance.current.id}
+            />
+        );
+
         if (root) {
             root.render(vis);
         } else {
