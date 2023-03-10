@@ -1,11 +1,10 @@
+import { Stack, Text, Tooltip } from '@mantine/core';
 import { BaseArtifactType, NodeId, ProvenanceNode } from '@trrack/core';
-import { transition } from 'd3';
-import React, { useState, useMemo } from 'react';
-import { useSpring, animated, easings, useTransition } from 'react-spring';
+import { useMemo } from 'react';
+import { animated, easings, useTransition } from 'react-spring';
 import { defaultIcon } from '../utils/IconConfig';
 import { ProvVisConfig } from './ProvVis';
 import { StratifiedMap } from './useComputeNodePosition';
-import { Stack, Tooltip, Text } from '@mantine/core';
 
 export function AnimatedIcon<
     T,
@@ -107,6 +106,8 @@ export function AnimatedIcon<
                 {...style}
                 cursor="pointer"
                 onClick={onClick}
+                className="provenance-node"
+                data-node-id={node.id}
                 onMouseOver={() => {
                     if (!style.transform.isAnimating) {
                         setHover(node.id);

@@ -1,5 +1,5 @@
 import { BaseArtifactType, NodeId, Nodes } from '@trrack/core';
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import { IconConfig } from '../utils/IconConfig';
 import { Tree } from './Tree';
 import { useComputeNodePosition } from './useComputeNodePosition';
