@@ -1,18 +1,20 @@
 import { initializeTrrack, NodeId } from '@trrack/core';
-import { render } from 'react-dom';
+import RDOM16 from 'react-dom';
+import RDOM from 'react-dom/client';
 import { ProvVis, ProvVisConfig } from './ProvVis';
 
-export function ProvVisCreator<
-    TrrackInstance extends ReturnType<typeof initializeTrrack> = ReturnType<
-        typeof initializeTrrack
-    >
->(
+type TrrackLike = ReturnType<typeof initializeTrrack<any, any>>;
+
+export async function ProvVisCreator<TrrackInstance extends TrrackLike>(
     node: Element,
     trrackInstance: TrrackInstance,
-    config: Partial<ProvVisConfig<any, any, any>>
+    config: Partial<ProvVisConfig<any, any, any>> = {},
+    REACT_16 = false
 ) {
+    let root: RDOM.Root | null;
+
     function renderTrrack() {
-        render(
+        const vis = (
             <ProvVis
                 root={trrackInstance.root.id}
                 config={{
@@ -21,9 +23,18 @@ export function ProvVisCreator<
                 }}
                 nodeMap={trrackInstance.graph.backend.nodes}
                 currentNode={trrackInstance.current.id}
-            />,
-            node
+            />
         );
+
+        if (REACT_16) {
+            RDOM16.render(vis, node);
+        } else {
+            if (!root) {
+                root = RDOM.createRoot(node);
+            }
+
+            root.render(vis);
+        }
     }
 
     trrackInstance.currentChange(() => {
