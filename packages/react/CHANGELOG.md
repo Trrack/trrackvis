@@ -1,3 +1,12 @@
+## [1.2.2-beta.1](https://github.com/Trrack/trrackvis/compare/@trrack/vis-react@1.2.1...@trrack/vis-react@1.2.2-beta.1) (2023-03-10)
+
+
+### Bug Fixes
+
+* **react:** fixed react, react-dom, @types/react, @types/react-dom version ([586b0a2](https://github.com/Trrack/trrackvis/commit/586b0a2227e8186c7dc955f1ffff8e114666194a))
+* **react:** made config option in ProvVisCreator optional ([f739de3](https://github.com/Trrack/trrackvis/commit/f739de374f7b62a4a04c53ece3d50f53d38ece3b))
+* **react:** updated react dependencies to support semver 16-18 ([6c8f51b](https://github.com/Trrack/trrackvis/commit/6c8f51be70bdb478670d38e0d35df02c6b033fa7))
+
 ## [1.2.1](https://github.com/Trrack/trrackvis/compare/@trrack/vis-react@1.2.0...@trrack/vis-react@1.2.1) (2023-03-10)
 
 
