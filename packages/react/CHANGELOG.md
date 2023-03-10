@@ -1,3 +1,10 @@
+## [1.2.2-beta.8](https://github.com/Trrack/trrackvis/compare/@trrack/vis-react@1.2.2-beta.7...@trrack/vis-react@1.2.2-beta.8) (2023-03-10)
+
+
+### Bug Fixes
+
+* **react:** updated typings for ProvVisCreator fn ([e5b6cd4](https://github.com/Trrack/trrackvis/commit/e5b6cd42c5a7970ab7a9e362aeb498e7d48c4f5c))
+
 ## [1.2.2-beta.7](https://github.com/Trrack/trrackvis/compare/@trrack/vis-react@1.2.2-beta.6...@trrack/vis-react@1.2.2-beta.7) (2023-03-10)
 
 
