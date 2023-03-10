@@ -1,3 +1,10 @@
+## [1.2.2-beta.7](https://github.com/Trrack/trrackvis/compare/@trrack/vis-react@1.2.2-beta.6...@trrack/vis-react@1.2.2-beta.7) (2023-03-10)
+
+
+### Bug Fixes
+
+* **react:** added conditional rendering ([536c2d1](https://github.com/Trrack/trrackvis/commit/536c2d1160a9a18a05953dfad1c4ab38d8546e89))
+
 ## [1.2.2-beta.6](https://github.com/Trrack/trrackvis/compare/@trrack/vis-react@1.2.2-beta.5...@trrack/vis-react@1.2.2-beta.6) (2023-03-10)
 
 
