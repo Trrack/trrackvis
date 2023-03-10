@@ -13,7 +13,7 @@ export function ProvVisCreator<
     config: Partial<ProvVisConfig<any, any, any>> = {}
 ) {
     let root: Root | null = null;
-    if (createRoot) {
+    if (typeof createRoot === 'function') {
         root = createRoot(node);
     }
 
