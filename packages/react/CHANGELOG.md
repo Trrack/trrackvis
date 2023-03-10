@@ -1,3 +1,11 @@
+## [1.2.1](https://github.com/Trrack/trrackvis/compare/@trrack/vis-react@1.2.0...@trrack/vis-react@1.2.1) (2023-03-10)
+
+
+### Bug Fixes
+
+* **react:** added data-node-id attribute and class to node-description divs ([331c1bc](https://github.com/Trrack/trrackvis/commit/331c1bcc5606ff9ccc2402943e92aef004589016))
+* **react:** added data-node-id attribute and classname to nodes ([72a1309](https://github.com/Trrack/trrackvis/commit/72a13093c065673da6fbede9d36f6558d3e72e8b))
+
 ## [1.2.1-beta.1](https://github.com/Trrack/trrackvis/compare/@trrack/vis-react@1.2.0...@trrack/vis-react@1.2.1-beta.1) (2023-03-10)
 
 
