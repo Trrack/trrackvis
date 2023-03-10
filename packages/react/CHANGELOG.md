@@ -1,3 +1,10 @@
+## [1.2.2-beta.5](https://github.com/Trrack/trrackvis/compare/@trrack/vis-react@1.2.2-beta.4...@trrack/vis-react@1.2.2-beta.5) (2023-03-10)
+
+
+### Bug Fixes
+
+* adding compat to react 16 & react 18 ([4824002](https://github.com/Trrack/trrackvis/commit/4824002b79e24f7dcb250a204b493d36337280fc))
+
 ## [1.2.2-beta.4](https://github.com/Trrack/trrackvis/compare/@trrack/vis-react@1.2.2-beta.3...@trrack/vis-react@1.2.2-beta.4) (2023-03-10)
 
 
