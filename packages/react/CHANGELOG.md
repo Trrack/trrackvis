@@ -1,3 +1,10 @@
+## [1.2.2-beta.6](https://github.com/Trrack/trrackvis/compare/@trrack/vis-react@1.2.2-beta.5...@trrack/vis-react@1.2.2-beta.6) (2023-03-10)
+
+
+### Bug Fixes
+
+* testing out updated logic ([483ea8d](https://github.com/Trrack/trrackvis/commit/483ea8d955fdc0ce18bbe9f5c2256e6192125fc8))
+
 ## [1.2.2-beta.5](https://github.com/Trrack/trrackvis/compare/@trrack/vis-react@1.2.2-beta.4...@trrack/vis-react@1.2.2-beta.5) (2023-03-10)
 
 
