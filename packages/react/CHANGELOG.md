@@ -1,3 +1,10 @@
+## [1.2.2-beta.2](https://github.com/Trrack/trrackvis/compare/@trrack/vis-react@1.2.2-beta.1...@trrack/vis-react@1.2.2-beta.2) (2023-03-10)
+
+
+### Bug Fixes
+
+* **react:** fixed createRoot being called multiple times ([1e62f7f](https://github.com/Trrack/trrackvis/commit/1e62f7f96ac43108aa982aff9a926936d8bb8340))
+
 ## [1.2.2-beta.1](https://github.com/Trrack/trrackvis/compare/@trrack/vis-react@1.2.1...@trrack/vis-react@1.2.2-beta.1) (2023-03-10)
 
 
