@@ -18,14 +18,14 @@
     },
     "devDependencies": {
         "@types/d3": "^7.4.0",
-        "@types/react": "^16.14.35",
-        "@types/react-dom": "^16.9.8"
+        "@types/react": "16 - 18",
+        "@types/react-dom": "16 - 18"
     },
     "peerDependencies": {
         "@trrack/core": "^1.0.0",
         "d3": "^7.8.0",
-        "react": "^16.13.0",
-        "react-dom": "^16.13.0",
+        "react": "16 - 18",
+        "react-dom": "16 - 18",
         "@mantine/core": "^5.10.5",
         "@mantine/hooks": "^5.10.5"
     },
