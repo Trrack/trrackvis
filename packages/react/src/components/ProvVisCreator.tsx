@@ -3,11 +3,9 @@ import RDOM16 from 'react-dom';
 import RDOM from 'react-dom/client';
 import { ProvVis, ProvVisConfig } from './ProvVis';
 
-type TrrackLike<S, E extends string = string> = ReturnType<
-    typeof initializeTrrack<S, E>
->;
+type TrrackLike = ReturnType<typeof initializeTrrack>;
 
-export async function ProvVisCreator<TrrackInstance extends TrrackLike<any>>(
+export async function ProvVisCreator<TrrackInstance extends TrrackLike>(
     node: Element,
     trrackInstance: TrrackInstance,
     config: Partial<ProvVisConfig<any, any, any>> = {},
