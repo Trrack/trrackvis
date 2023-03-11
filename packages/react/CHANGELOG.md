@@ -1,3 +1,10 @@
+## [1.2.3-beta.1](https://github.com/Trrack/trrackvis/compare/@trrack/vis-react@1.2.2...@trrack/vis-react@1.2.3-beta.1) (2023-03-11)
+
+
+### Bug Fixes
+
+* **react:** fixed typings for ProvVisCreator ([04920cf](https://github.com/Trrack/trrackvis/commit/04920cf9eeaaaf87f9257cd430f346b5cb2577d8))
+
 ## [1.2.2](https://github.com/Trrack/trrackvis/compare/@trrack/vis-react@1.2.1...@trrack/vis-react@1.2.2) (2023-03-10)
 
 
