@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/Trrack/trrackvis/compare/@trrack/vis-react@1.2.3...@trrack/vis-react@1.3.0) (2023-05-15)
+
+
+### Features
+
+* **react:** updated type + update storybook to 7 ([4a201e8](https://github.com/Trrack/trrackvis/commit/4a201e8d870dbf93e3653ad00acd01fe15f1f474)), closes [#39](https://github.com/Trrack/trrackvis/issues/39)
+
 ## [1.2.3](https://github.com/Trrack/trrackvis/compare/@trrack/vis-react@1.2.2...@trrack/vis-react@1.2.3) (2023-03-11)
 
 
