@@ -1,7 +1,7 @@
-import { faSquarePlus } from '@fortawesome/free-solid-svg-icons/faSquarePlus';
 import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
-import { faX } from '@fortawesome/free-solid-svg-icons/faX';
+import { faSquarePlus } from '@fortawesome/free-solid-svg-icons/faSquarePlus';
 import { faTrash } from '@fortawesome/free-solid-svg-icons/faTrash';
+import { faX } from '@fortawesome/free-solid-svg-icons/faX';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconConfig } from '../../utils/IconConfig';
@@ -12,8 +12,7 @@ export const iconConfig: IconConfig<
     {
         tasks: Task[];
     },
-    string,
-    any
+    string
 > = {
     'add-task': {
         glyph: () => (

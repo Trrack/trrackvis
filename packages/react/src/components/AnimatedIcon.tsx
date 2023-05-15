@@ -1,16 +1,12 @@
 import { Stack, Text, Tooltip } from '@mantine/core';
-import { BaseArtifactType, NodeId, ProvenanceNode } from '@trrack/core';
+import { NodeId, ProvenanceNode } from '@trrack/core';
 import { useMemo } from 'react';
 import { animated, easings, useTransition } from 'react-spring';
 import { defaultIcon } from '../utils/IconConfig';
 import { ProvVisConfig } from './ProvVis';
 import { StratifiedMap } from './useComputeNodePosition';
 
-export function AnimatedIcon<
-    T,
-    S extends string,
-    A extends BaseArtifactType<any>
->({
+export function AnimatedIcon<T, S extends string>({
     width,
     depth,
     yOffset,
@@ -28,9 +24,9 @@ export function AnimatedIcon<
     depth: number;
     yOffset: number;
     onClick: () => void;
-    config: ProvVisConfig<T, S, A>;
-    node: ProvenanceNode<T, S, A>;
-    nodes: StratifiedMap<T, S, A>;
+    config: ProvVisConfig<T, S>;
+    node: ProvenanceNode<T, S>;
+    nodes: StratifiedMap<T, S>;
     currentNode: NodeId;
     isHover: boolean;
     setHover: (node: NodeId | null) => void;
@@ -71,8 +67,8 @@ export function AnimatedIcon<
     });
 
     const icon = useMemo(() => {
-        const currentIconConfig = config.iconConfig?.[node.meta.eventType];
-        const currDefaultIcon = defaultIcon(colorMap[node.meta.eventType]);
+        const currentIconConfig = config.iconConfig?.[node.event];
+        const currDefaultIcon = defaultIcon(colorMap[node.event]);
 
         if (currentIconConfig && currentIconConfig.glyph) {
             if (node.id === currentNode && currentIconConfig.currentGlyph) {

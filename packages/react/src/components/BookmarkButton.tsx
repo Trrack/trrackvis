@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookmark } from '@fortawesome/free-solid-svg-icons/faBookmark';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useState } from 'react';
 
-export function BookmarkButton<S extends string, A>({
+export function BookmarkButton({
     onClick,
     isBookmarked,
     color,

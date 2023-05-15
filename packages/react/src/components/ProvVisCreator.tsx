@@ -8,7 +8,7 @@ type TrrackLike = ReturnType<typeof initializeTrrack>;
 export async function ProvVisCreator<TrrackInstance extends TrrackLike>(
     node: Element,
     trrackInstance: TrrackInstance,
-    config: Partial<ProvVisConfig<any, any, any>> = {},
+    config: Partial<ProvVisConfig<any, any>> = {},
     REACT_16 = false
 ) {
     let root: RDOM.Root | null;

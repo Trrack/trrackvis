@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit } from '@fortawesome/free-solid-svg-icons/faEdit';
-import { Popover, Button, Textarea, Group, Stack } from '@mantine/core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Button, Group, Popover, Stack, Textarea } from '@mantine/core';
+import { useState } from 'react';
 
-export function AnnotationButton<S extends string, A>({
+export function AnnotationButton({
     color,
     annotation,
     setAnnotation,

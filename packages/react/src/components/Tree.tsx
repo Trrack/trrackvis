@@ -1,4 +1,4 @@
-import { BaseArtifactType, NodeId, ProvenanceNode } from '@trrack/core';
+import { NodeId, ProvenanceNode } from '@trrack/core';
 import * as d3 from 'd3';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { animated, easings, useSpring } from 'react-spring';
@@ -11,15 +11,15 @@ import { StratifiedMap } from './useComputeNodePosition';
 // TODOs:
 // Annotations doing something
 
-export function Tree<T, S extends string, A extends BaseArtifactType<any>>({
+export function Tree<T, S extends string>({
     nodes,
     links,
     currentNode,
     config,
 }: {
-    nodes: StratifiedMap<T, S, A>;
-    links: d3.HierarchyLink<ProvenanceNode<T, S, A>>[];
-    config: ProvVisConfig<T, S, A>;
+    nodes: StratifiedMap<T, S>;
+    links: d3.HierarchyLink<ProvenanceNode<T, S>>[];
+    config: ProvVisConfig<T, S>;
     currentNode: NodeId;
 }) {
     const [hoverNode, setHoverNode] = useState<NodeId | null>(null);
@@ -112,8 +112,8 @@ export function Tree<T, S extends string, A extends BaseArtifactType<any>>({
         innerColorMap.Root = 'black';
 
         Object.values(nodes).forEach((node) => {
-            if (!innerColorMap[node.data.meta.eventType]) {
-                innerColorMap[node.data.meta.eventType] =
+            if (!innerColorMap[node.data.event]) {
+                innerColorMap[node.data.event] =
                     tableauColors[currColorNumber % 10];
                 currColorNumber += 1;
             }
@@ -151,13 +151,13 @@ export function Tree<T, S extends string, A extends BaseArtifactType<any>>({
         return links.map((link) => {
             // TODO:: idk how to fix this typing
             const sourceWidth = (
-                link.source as d3.HierarchyNode<ProvenanceNode<T, S, A>> & {
+                link.source as d3.HierarchyNode<ProvenanceNode<T, S>> & {
                     width: number;
                 }
             ).width;
 
             const targetWidth = (
-                link.target as d3.HierarchyNode<ProvenanceNode<T, S, A>> & {
+                link.target as d3.HierarchyNode<ProvenanceNode<T, S>> & {
                     width: number;
                 }
             ).width;
