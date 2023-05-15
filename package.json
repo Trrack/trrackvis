@@ -60,7 +60,6 @@
     "@nrwl/vite": "16.1.4",
     "@nrwl/web": "16.1.4",
     "@nrwl/webpack": "16.1.4",
-    "@nrwl/workspace": "16.1.4",
     "@reduxjs/toolkit": "1.9.0",
     "@storybook/addon-essentials": "7.0.12",
     "@storybook/builder-vite": "^0.2.6",
@@ -123,7 +122,8 @@
     "vite-plugin-eslint": "^1.8.1",
     "vite-tsconfig-paths": "4.2.0",
     "vitest": "0.31.0",
-    "nx-cloud": "16.0.5"
+    "nx-cloud": "16.0.5",
+    "@nx/workspace": "16.1.4"
   },
   "workspaces": [
     "packages/*"
