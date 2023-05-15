@@ -1,7 +1,7 @@
 import { ProvVisConfig } from '../src/components/ProvVis';
 
 export type ProvVisStoryProps = Omit<
-    ProvVisConfig<any, any, any>,
+    ProvVisConfig<any, any>,
     | 'iconConfig'
     | 'changeCurrent'
     | 'bookmarkNode'

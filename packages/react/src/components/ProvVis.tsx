@@ -1,21 +1,17 @@
-import { BaseArtifactType, NodeId, Nodes } from '@trrack/core';
+import { NodeId, Nodes } from '@trrack/core';
 import { useMemo } from 'react';
 import { IconConfig } from '../utils/IconConfig';
 import { Tree } from './Tree';
 import { useComputeNodePosition } from './useComputeNodePosition';
 
-interface ProvVisProps<T, S extends string, A extends BaseArtifactType<any>> {
+interface ProvVisProps<T, S extends string> {
     root: NodeId;
     currentNode: NodeId;
-    nodeMap: Nodes<T, S, A>;
-    config?: Partial<ProvVisConfig<T, S, A>>;
+    nodeMap: Nodes<T, S>;
+    config?: Partial<ProvVisConfig<T, S>>;
 }
 
-export interface ProvVisConfig<
-    T,
-    S extends string,
-    A extends BaseArtifactType<any>
-> {
+export interface ProvVisConfig<T, S extends string> {
     gutter: number;
     verticalSpace: number;
     nodeWidthShown: number;
@@ -26,7 +22,7 @@ export interface ProvVisConfig<
     annotationHeight: number;
     nodeAndLabelGap: number;
     labelWidth: number;
-    iconConfig: IconConfig<T, S, A> | null;
+    iconConfig: IconConfig<T, S> | null;
     changeCurrent: (id: NodeId) => void;
     bookmarkNode: ((id: NodeId) => void) | null;
     annotateNode: ((id: NodeId, annotation: string) => void) | null;
@@ -34,7 +30,7 @@ export interface ProvVisConfig<
     isBookmarked: (id: NodeId) => boolean;
 }
 
-const defaultConfig: ProvVisConfig<any, any, any> = {
+const defaultConfig: ProvVisConfig<any, any> = {
     gutter: 25,
     nodeWidthShown: 3,
     verticalSpace: 30,
@@ -47,18 +43,18 @@ const defaultConfig: ProvVisConfig<any, any, any> = {
     labelWidth: 150,
     iconConfig: null,
     changeCurrent: () => null,
-    bookmarkNode: null,
+    bookmarkNode: () => null,
     annotateNode: null,
-    getAnnotation: (id: NodeId) => '',
-    isBookmarked: (id: NodeId) => false,
+    getAnnotation: () => '',
+    isBookmarked: () => false,
 };
 
-export function ProvVis<T, S extends string, A extends BaseArtifactType<any>>({
+export function ProvVis<T, S extends string>({
     nodeMap,
     root,
     currentNode,
     config,
-}: ProvVisProps<T, S, A>) {
+}: ProvVisProps<T, S>) {
     const { stratifiedMap: nodePositions, links } = useComputeNodePosition(
         nodeMap,
         currentNode,

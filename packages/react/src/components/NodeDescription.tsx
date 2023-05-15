@@ -1,26 +1,16 @@
 import { Stack, Text, Tooltip } from '@mantine/core';
-import {
-    BaseArtifactType,
-    NodeId,
-    ProvenanceNode,
-    isStateNode,
-} from '@trrack/core';
+import { NodeId, ProvenanceNode, isStateNode } from '@trrack/core';
 import { useState } from 'react';
 import { animated, easings, useSpring } from 'react-spring';
 import { AnnotationButton } from './AnnotationButton';
 import { BookmarkButton } from './BookmarkButton';
 import { ProvVisConfig } from './ProvVis';
 
-export function NodeDescription<
-    T,
-    S extends string,
-    A extends BaseArtifactType<any>
->({
+export function NodeDescription<T, S extends string>({
     depth,
     yOffset,
     node,
     config,
-    currentNode,
     onClick,
     isHover,
     setHover,
@@ -28,8 +18,8 @@ export function NodeDescription<
 }: {
     depth: number;
     yOffset: number;
-    node: ProvenanceNode<T, S, A>;
-    config: ProvVisConfig<T, S, A>;
+    node: ProvenanceNode<T, S>;
+    config: ProvVisConfig<T, S>;
     currentNode: NodeId;
     onClick: () => void;
     isHover: boolean;
@@ -149,7 +139,7 @@ export function NodeDescription<
             {config.bookmarkNode !== null &&
             (isHover || isAnnotationOpen || config.isBookmarked(node.id)) ? (
                 <BookmarkButton
-                    color={colorMap[node.meta.eventType]}
+                    color={colorMap[node.event]}
                     isBookmarked={config.isBookmarked(node.id)}
                     onClick={() => config.bookmarkNode?.(node.id)}
                 />

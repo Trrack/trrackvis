@@ -1,12 +1,7 @@
 import { useMemo, useState } from 'react';
 import { ProvVis, ProvVisConfig } from '../components/ProvVis';
 
-import {
-    BaseArtifactType,
-    initializeTrrack,
-    NodeId,
-    Registry,
-} from '@trrack/core';
+import { initializeTrrack, NodeId, Registry } from '@trrack/core';
 import { iconConfig } from './customIcons/iconConfig';
 import { Tasks } from './Tasks';
 
@@ -69,19 +64,19 @@ export function useTrrack() {
     return { trrack, actions };
 }
 
-type GraphProps<T, S extends string, A extends BaseArtifactType<any>> = {
+type GraphProps<T, S extends string> = {
     trrack: ReturnType<typeof initializeTrrack<State>>;
     actions: ReturnType<typeof useTrrack>['actions'];
     customIcons?: boolean;
-    config: Partial<ProvVisConfig<T, S, A>>;
+    config: Partial<ProvVisConfig<T, S>>;
 };
 
-export const Graph = <T, S extends string, A extends BaseArtifactType<any>>({
+export const Graph = <T, S extends string>({
     trrack,
     actions,
     customIcons = false,
     config,
-}: GraphProps<T, S, A>) => {
+}: GraphProps<T, S>) => {
     const {
         verticalSpace = 30,
         labelWidth = 100,
