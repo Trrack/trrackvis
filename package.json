@@ -55,7 +55,6 @@
     "@nrwl/jest": "16.1.4",
     "@nrwl/js": "16.1.4",
     "@nrwl/linter": "16.1.4",
-    "@nrwl/nx-cloud": "16.0.5",
     "@nrwl/react": "16.1.4",
     "@nrwl/storybook": "16.1.4",
     "@nrwl/vite": "16.1.4",
@@ -123,7 +122,8 @@
     "vite-plugin-dts": "~1.7.1",
     "vite-plugin-eslint": "^1.8.1",
     "vite-tsconfig-paths": "4.2.0",
-    "vitest": "0.31.0"
+    "vitest": "0.31.0",
+    "nx-cloud": "16.0.5"
   },
   "workspaces": [
     "packages/*"
