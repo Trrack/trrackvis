@@ -1,3 +1,10 @@
+# [1.4.0-alpha.2](https://github.com/Trrack/trrackvis/compare/@trrack/vis-react@1.4.0-alpha.1...@trrack/vis-react@1.4.0-alpha.2) (2023-07-18)
+
+
+### Bug Fixes
+
+* **react:** fixing alignment ([08d981e](https://github.com/Trrack/trrackvis/commit/08d981e4b028e94041e1c250bc1bc075b3c31c1b))
+
 # [1.4.0-alpha.1](https://github.com/Trrack/trrackvis/compare/@trrack/vis-react@1.3.0...@trrack/vis-react@1.4.0-alpha.1) (2023-07-18)
 
 
