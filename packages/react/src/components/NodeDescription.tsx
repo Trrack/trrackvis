@@ -69,7 +69,6 @@ export function NodeDescription<T, S extends string>({
                 cursor: 'pointer',
                 position: 'absolute',
                 height: config.verticalSpace * 2,
-                alignContent: 'center',
                 flexWrap: 'wrap',
                 width: `100%`,
             }}
