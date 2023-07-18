@@ -1,3 +1,15 @@
+# [1.4.0-alpha.1](https://github.com/Trrack/trrackvis/compare/@trrack/vis-react@1.3.0...@trrack/vis-react@1.4.0-alpha.1) (2023-07-18)
+
+
+### Bug Fixes
+
+* **react:** fixing text positioning ([bddb665](https://github.com/Trrack/trrackvis/commit/bddb6656be10270211883df02afa840dc20c4300))
+
+
+### Features
+
+* **react:** adding "nodeExtra" option ([d1a8456](https://github.com/Trrack/trrackvis/commit/d1a845668f3b5bc3d0ba77f2e979bd2f3d4aa5a4))
+
 # [1.3.0](https://github.com/Trrack/trrackvis/compare/@trrack/vis-react@1.2.3...@trrack/vis-react@1.3.0) (2023-05-15)
 
 
