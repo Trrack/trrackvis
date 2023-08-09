@@ -173,7 +173,7 @@ export function NodeDescription<T, S extends string>({
                 </Group>
                 {isCurrent ? (
                     <animated.div style={{ ...extraNodeOpacity }} ref={ref}>
-                        {config.nodeExtra[node.event]}
+                        {config.nodeExtra[node.event] || config.nodeExtra['*']}
                     </animated.div>
                 ) : null}
             </Stack>
