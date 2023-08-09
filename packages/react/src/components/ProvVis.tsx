@@ -28,7 +28,7 @@ export interface ProvVisConfig<T, S extends string> {
     annotateNode: ((id: NodeId, annotation: string) => void) | null;
     getAnnotation: (id: NodeId) => string;
     isBookmarked: (id: NodeId) => boolean;
-    nodeExtra: Record<S, React.ReactElement | null>;
+    nodeExtra: Partial<Record<S | '*', React.ReactElement | null>>;
 }
 
 const defaultConfig: ProvVisConfig<any, any> = {
