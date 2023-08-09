@@ -1,3 +1,10 @@
+# [1.4.0-alpha.3](https://github.com/Trrack/trrackvis/compare/@trrack/vis-react@1.4.0-alpha.2...@trrack/vis-react@1.4.0-alpha.3) (2023-08-09)
+
+
+### Features
+
+* **react:** adding * as option to node extra ([6923721](https://github.com/Trrack/trrackvis/commit/6923721001981026b411b2822a3506e520790589)), closes [#44](https://github.com/Trrack/trrackvis/issues/44) [#43](https://github.com/Trrack/trrackvis/issues/43) [#42](https://github.com/Trrack/trrackvis/issues/42)
+
 # [1.4.0-alpha.2](https://github.com/Trrack/trrackvis/compare/@trrack/vis-react@1.4.0-alpha.1...@trrack/vis-react@1.4.0-alpha.2) (2023-07-18)
 
 
