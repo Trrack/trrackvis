@@ -19,6 +19,7 @@ export function AnimatedIcon<T, S extends string>({
     setHover,
     colorMap,
     xOffset,
+    extraHeight,
 }: {
     width: number;
     depth: number;
@@ -32,6 +33,7 @@ export function AnimatedIcon<T, S extends string>({
     setHover: (node: NodeId | null) => void;
     colorMap: Record<S | 'Root', string>;
     xOffset: number;
+    extraHeight: number;
 }) {
     const transitions = useTransition([node], {
         config: {
@@ -61,7 +63,7 @@ export function AnimatedIcon<T, S extends string>({
         update: {
             opacity: 1,
             transform: `translate(${-width * config.gutter + xOffset} , ${
-                depth * config.verticalSpace + yOffset
+                depth * config.verticalSpace + yOffset + extraHeight
             })`,
         },
     });

@@ -7,10 +7,12 @@ tmp
 
 # dependencies
 node_modules
+yarn.lock
 
 # IDEs and editors
 /.idea
 .project
+.vscode
 .classpath
 .c9/
 *.launch
