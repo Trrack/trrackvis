@@ -1,24 +1,12 @@
-import React from 'react';
-
-import { BaseArtifactType, isStateNode, ProvenanceNode } from '@trrack/core';
+import { ProvenanceNode } from '@trrack/core';
 import { ProvVisConfig } from './ProvVis';
 
-export function AnnotationField<T, S extends string, A extends BaseArtifactType<any>>({
-  config,
-  node,
-  setAnnotationDepth,
-}: {
-  config: ProvVisConfig<T, S, A>;
-  node: ProvenanceNode<T, S, A>;
-  setAnnotationDepth: (depth: number | null) => void;
+export function AnnotationField<T, S extends string>(_props: {
+    config: ProvVisConfig<T, S>;
+    node: ProvenanceNode<T, S>;
+    setAnnotationDepth: (depth: number | null) => void;
 }) {
-  const [value, setValue] = React.useState(isStateNode(node) ? config.getAnnotation(node.id) : 'Test');
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(event.target.value);
-  };
-
-  return <div></div>
+    return <div></div>;
     // <Card>
     //   <CardContent>
     //     <TextField

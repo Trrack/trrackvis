@@ -1,16 +1,12 @@
 import { Stack, Text, Tooltip } from '@mantine/core';
-import { BaseArtifactType, NodeId, ProvenanceNode } from '@trrack/core';
+import { NodeId, ProvenanceNode } from '@trrack/core';
 import { useMemo } from 'react';
 import { animated, easings, useTransition } from 'react-spring';
-import { defaultIcon } from '../utils/IconConfig';
+import { defaultDarkmodeIcon, defaultIcon } from '../utils/IconConfig';
 import { ProvVisConfig } from './ProvVis';
 import { StratifiedMap } from './useComputeNodePosition';
 
-export function AnimatedIcon<
-    T,
-    S extends string,
-    A extends BaseArtifactType<any>
->({
+export function AnimatedIcon<T, S extends string>({
     width,
     depth,
     yOffset,
@@ -23,19 +19,21 @@ export function AnimatedIcon<
     setHover,
     colorMap,
     xOffset,
+    extraHeight,
 }: {
     width: number;
     depth: number;
     yOffset: number;
     onClick: () => void;
-    config: ProvVisConfig<T, S, A>;
-    node: ProvenanceNode<T, S, A>;
-    nodes: StratifiedMap<T, S, A>;
+    config: ProvVisConfig<T, S>;
+    node: ProvenanceNode<T, S>;
+    nodes: StratifiedMap<T, S>;
     currentNode: NodeId;
     isHover: boolean;
     setHover: (node: NodeId | null) => void;
     colorMap: Record<S | 'Root', string>;
     xOffset: number;
+    extraHeight: number;
 }) {
     const transitions = useTransition([node], {
         config: {
@@ -65,14 +63,16 @@ export function AnimatedIcon<
         update: {
             opacity: 1,
             transform: `translate(${-width * config.gutter + xOffset} , ${
-                depth * config.verticalSpace + yOffset
+                depth * config.verticalSpace + yOffset + extraHeight
             })`,
         },
     });
 
     const icon = useMemo(() => {
-        const currentIconConfig = config.iconConfig?.[node.meta.eventType];
-        const currDefaultIcon = defaultIcon(colorMap[node.meta.eventType]);
+        const currentIconConfig = config.iconConfig?.[node.event];
+        const currDefaultIcon = config.isDarkMode
+            ? defaultDarkmodeIcon(colorMap[node.event])
+            : defaultIcon(colorMap[node.event]);
 
         if (currentIconConfig && currentIconConfig.glyph) {
             if (node.id === currentNode && currentIconConfig.currentGlyph) {
@@ -98,7 +98,15 @@ export function AnimatedIcon<
         }
 
         return currDefaultIcon.glyph(node);
-    }, [config.iconConfig, currentNode, isHover, width, colorMap, node]);
+    }, [
+        config.iconConfig,
+        config.isDarkMode,
+        node,
+        colorMap,
+        currentNode,
+        isHover,
+        width,
+    ]);
 
     return transitions((style) => {
         return (

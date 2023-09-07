@@ -1,4 +1,4 @@
-import { BaseArtifactType, NodeId, ProvenanceNode } from '@trrack/core';
+import { NodeId, ProvenanceNode } from '@trrack/core';
 import * as d3 from 'd3';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { animated, easings, useSpring } from 'react-spring';
@@ -11,23 +11,27 @@ import { StratifiedMap } from './useComputeNodePosition';
 // TODOs:
 // Annotations doing something
 
-export function Tree<T, S extends string, A extends BaseArtifactType<any>>({
+export function Tree<T, S extends string>({
     nodes,
     links,
     currentNode,
     config,
 }: {
-    nodes: StratifiedMap<T, S, A>;
-    links: d3.HierarchyLink<ProvenanceNode<T, S, A>>[];
-    config: ProvVisConfig<T, S, A>;
+    nodes: StratifiedMap<T, S>;
+    links: d3.HierarchyLink<ProvenanceNode<T, S>>[];
+    config: ProvVisConfig<T, S>;
     currentNode: NodeId;
 }) {
     const [hoverNode, setHoverNode] = useState<NodeId | null>(null);
     const [xPan, setXPan] = useState<number>(0);
+    const [extraHeight, setExtraHeight] = useState<number>(0);
     const scrollRef = useRef<HTMLDivElement>(null);
+
     useEffect(() => {
         setXPan(0);
     }, [currentNode]);
+
+    console.log(extraHeight);
 
     const maxWidth = useMemo(() => {
         return Math.max(
@@ -109,18 +113,18 @@ export function Tree<T, S extends string, A extends BaseArtifactType<any>>({
             string
         >;
 
-        innerColorMap.Root = 'black';
+        innerColorMap.Root = config.isDarkMode ? 'white' : 'black';
 
         Object.values(nodes).forEach((node) => {
-            if (!innerColorMap[node.data.meta.eventType]) {
-                innerColorMap[node.data.meta.eventType] =
+            if (!innerColorMap[node.data.event]) {
+                innerColorMap[node.data.event] =
                     tableauColors[currColorNumber % 10];
                 currColorNumber += 1;
             }
         });
 
         return innerColorMap;
-    }, [nodes]);
+    }, [nodes, config.isDarkMode]);
 
     // render the descriptions for the backbone nodes
     const descriptions = useMemo(() => {
@@ -129,7 +133,14 @@ export function Tree<T, S extends string, A extends BaseArtifactType<any>>({
             .map((node) => {
                 return (
                     <NodeDescription
+                        isCurrent={node.id === currentNode}
                         key={node.id}
+                        extraHeight={
+                            node.depth > nodes[currentNode].depth
+                                ? extraHeight
+                                : 0
+                        }
+                        setExtraHeight={setExtraHeight}
                         config={config}
                         depth={node.depth}
                         node={node.data}
@@ -144,20 +155,20 @@ export function Tree<T, S extends string, A extends BaseArtifactType<any>>({
                     />
                 );
             });
-    }, [nodes, currentNode, hoverNode, colorMap, config]);
+    }, [nodes, currentNode, extraHeight, config, hoverNode, colorMap]);
 
     // render edges for every node
     const edges = useMemo(() => {
         return links.map((link) => {
             // TODO:: idk how to fix this typing
             const sourceWidth = (
-                link.source as d3.HierarchyNode<ProvenanceNode<T, S, A>> & {
+                link.source as d3.HierarchyNode<ProvenanceNode<T, S>> & {
                     width: number;
                 }
             ).width;
 
             const targetWidth = (
-                link.target as d3.HierarchyNode<ProvenanceNode<T, S, A>> & {
+                link.target as d3.HierarchyNode<ProvenanceNode<T, S>> & {
                     width: number;
                 }
             ).width;
@@ -178,12 +189,20 @@ export function Tree<T, S extends string, A extends BaseArtifactType<any>>({
                             ? config.nodeWidthShown
                             : maxWidth) * config.gutter
                     }
-                    y1Offset={0}
-                    y2Offset={0}
+                    y1Offset={
+                        link.source.depth > nodes[currentNode].depth
+                            ? extraHeight
+                            : 0
+                    }
+                    y2Offset={
+                        link.target.depth > nodes[currentNode].depth
+                            ? extraHeight
+                            : 0
+                    }
                 />
             );
         });
-    }, [links, config, maxWidth, nodes]);
+    }, [links, nodes, config, maxWidth, currentNode, extraHeight]);
 
     // render icons for every node
     const nodeIcons = useMemo(() => {
@@ -201,6 +220,9 @@ export function Tree<T, S extends string, A extends BaseArtifactType<any>>({
                         config.changeCurrent(node.id!);
                     }}
                     nodes={nodes}
+                    extraHeight={
+                        node.depth > nodes[currentNode].depth ? extraHeight : 0
+                    }
                     config={config}
                     node={node.data}
                     currentNode={currentNode}
@@ -218,7 +240,15 @@ export function Tree<T, S extends string, A extends BaseArtifactType<any>>({
                 />
             );
         });
-    }, [nodes, currentNode, config, hoverNode, colorMap, maxWidth]);
+    }, [
+        nodes,
+        currentNode,
+        extraHeight,
+        config,
+        hoverNode,
+        colorMap,
+        maxWidth,
+    ]);
 
     // // apply zoom/panning
     useEffect(() => {
@@ -300,7 +330,8 @@ export function Tree<T, S extends string, A extends BaseArtifactType<any>>({
                         overflow: 'hidden',
                         height: `${
                             (maxHeight + 1) * config.verticalSpace +
-                            config.marginTop
+                            config.marginTop +
+                            extraHeight
                         }px`,
                         width: `${
                             config.nodeWidthShown * config.gutter +

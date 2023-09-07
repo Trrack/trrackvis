@@ -1,15 +1,11 @@
-import { BaseArtifactType, ProvenanceNode } from '@trrack/core';
+import { ProvenanceNode } from '@trrack/core';
 import { HierarchyNode } from 'd3';
-import React from 'react';
-import { useSpring, animated, easings, useTransition } from 'react-spring';
+import { animated, easings, useTransition } from 'react-spring';
 import { ProvVisConfig } from './ProvVis';
 import { StratifiedMap } from './useComputeNodePosition';
+import { useMediaQuery } from '@mantine/hooks';
 
-export function AnimatedLine<
-    T,
-    S extends string,
-    A extends BaseArtifactType<any>
->({
+export function AnimatedLine<T, S extends string>({
     x1Width,
     x2Width,
     y1Depth,
@@ -28,11 +24,11 @@ export function AnimatedLine<
     y2Depth: number;
     y1Offset: number;
     y2Offset: number;
-    config: ProvVisConfig<T, S, A>;
+    config: ProvVisConfig<T, S>;
     xOffset: number;
     uniqueKey: string;
-    nodes: StratifiedMap<T, S, A>;
-    parentNode: HierarchyNode<ProvenanceNode<T, S, A>>;
+    nodes: StratifiedMap<T, S>;
+    parentNode: HierarchyNode<ProvenanceNode<T, S>>;
 }) {
     const transitions = useTransition([uniqueKey], {
         config: {
@@ -69,6 +65,12 @@ export function AnimatedLine<
     });
 
     return transitions((style) => {
-        return <animated.line {...style} stroke="black" pointerEvents="none" />
+        return (
+            <animated.line
+                {...style}
+                stroke={config.isDarkMode ? 'white' : 'black'}
+                pointerEvents="none"
+            />
+        );
     });
 }
