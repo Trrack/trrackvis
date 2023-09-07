@@ -43,7 +43,12 @@ export function defaultDarkmodeIcon<T, S extends string>(
 
     return {
         glyph: () => (
-            <circle r={5} fill="black" stroke={lighterColor} strokeWidth={2} />
+            <circle
+                r={5}
+                fill="#413839"
+                stroke={lighterColor}
+                strokeWidth={2}
+            />
         ),
         currentGlyph: () => (
             <circle
@@ -54,13 +59,28 @@ export function defaultDarkmodeIcon<T, S extends string>(
             />
         ),
         backboneGlyph: () => (
-            <circle r={5} fill="black" stroke={lighterColor} strokeWidth={2} />
+            <circle
+                r={5}
+                fill="#413839"
+                stroke={lighterColor}
+                strokeWidth={2}
+            />
         ),
         bundleGlyph: () => (
-            <circle r={5} fill="black" stroke={lighterColor} strokeWidth={2} />
+            <circle
+                r={5}
+                fill="#413839"
+                stroke={lighterColor}
+                strokeWidth={2}
+            />
         ),
         hoverGlyph: () => (
-            <circle r={6} fill="black" stroke={lighterColor} strokeWidth={2} />
+            <circle
+                r={6}
+                fill="#413839"
+                stroke={lighterColor}
+                strokeWidth={2}
+            />
         ),
     };
 }
