@@ -1,6 +1,5 @@
 import { ProvenanceNode } from '@trrack/core';
 import { ReactElement } from 'react';
-import * as d3 from 'd3';
 
 type ReactChild = ReactElement | string | number;
 
@@ -32,55 +31,6 @@ export function defaultIcon<T, S extends string>(color: string): Config<T, S> {
         ),
         hoverGlyph: () => (
             <circle r={6} fill="white" stroke={color} strokeWidth={2} />
-        ),
-    };
-}
-
-export function defaultDarkmodeIcon<T, S extends string>(
-    color: string
-): Config<T, S> {
-    const lighterColor = d3.color(color)?.brighter().toString();
-
-    return {
-        glyph: () => (
-            <circle
-                r={5}
-                fill="#413839"
-                stroke={lighterColor}
-                strokeWidth={2}
-            />
-        ),
-        currentGlyph: () => (
-            <circle
-                r={5}
-                fill={lighterColor}
-                stroke={lighterColor}
-                strokeWidth={2}
-            />
-        ),
-        backboneGlyph: () => (
-            <circle
-                r={5}
-                fill="#413839"
-                stroke={lighterColor}
-                strokeWidth={2}
-            />
-        ),
-        bundleGlyph: () => (
-            <circle
-                r={5}
-                fill="#413839"
-                stroke={lighterColor}
-                strokeWidth={2}
-            />
-        ),
-        hoverGlyph: () => (
-            <circle
-                r={6}
-                fill="#413839"
-                stroke={lighterColor}
-                strokeWidth={2}
-            />
         ),
     };
 }

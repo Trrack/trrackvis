@@ -4,7 +4,6 @@ import { ProvVis, ProvVisConfig } from '../components/ProvVis';
 import { initializeTrrack, NodeId, Registry } from '@trrack/core';
 import { iconConfig } from './customIcons/iconConfig';
 import { Tasks } from './Tasks';
-import { useDarkMode } from 'storybook-dark-mode';
 
 export type Task = {
     id: string;
@@ -90,7 +89,6 @@ export const Graph = <T, S extends string>({
     } = config;
 
     const [currNode, setCurrNode] = useState<NodeId>();
-    const darkMode = useDarkMode();
 
     trrack.currentChange(() => {
         setCurrNode(trrack.current.id);
@@ -99,7 +97,6 @@ export const Graph = <T, S extends string>({
     return (
         <div
             style={{
-                background: darkMode ? '#020202' : 'white',
                 height: '100vh',
                 display: 'flex',
                 justifyContent: 'center',

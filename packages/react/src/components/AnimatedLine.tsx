@@ -3,7 +3,6 @@ import { HierarchyNode } from 'd3';
 import { animated, easings, useTransition } from 'react-spring';
 import { ProvVisConfig } from './ProvVis';
 import { StratifiedMap } from './useComputeNodePosition';
-import { useMediaQuery } from '@mantine/hooks';
 
 export function AnimatedLine<T, S extends string>({
     x1Width,
@@ -65,12 +64,6 @@ export function AnimatedLine<T, S extends string>({
     });
 
     return transitions((style) => {
-        return (
-            <animated.line
-                {...style}
-                stroke={config.isDarkMode ? 'white' : 'black'}
-                pointerEvents="none"
-            />
-        );
+        return <animated.line {...style} stroke="black" pointerEvents="none" />;
     });
 }

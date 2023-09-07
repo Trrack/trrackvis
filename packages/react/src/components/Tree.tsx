@@ -113,7 +113,7 @@ export function Tree<T, S extends string>({
             string
         >;
 
-        innerColorMap.Root = config.isDarkMode ? 'white' : 'black';
+        innerColorMap.Root = 'black';
 
         Object.values(nodes).forEach((node) => {
             if (!innerColorMap[node.data.event]) {
@@ -124,7 +124,7 @@ export function Tree<T, S extends string>({
         });
 
         return innerColorMap;
-    }, [nodes, config.isDarkMode]);
+    }, [nodes]);
 
     // render the descriptions for the backbone nodes
     const descriptions = useMemo(() => {

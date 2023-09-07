@@ -10,14 +10,13 @@
     "dependencies": {
         "@fortawesome/free-solid-svg-icons": "^6.2.1",
         "@fortawesome/react-fontawesome": "^0.2.0",
-        "@mantine/core": "^5.10.5",
-        "@mantine/hooks": "^5.10.5",
-        "@trrack/core": "^1.0.0",
-        "d3": "^7.8.0",
         "react": "16.8 - 18",
         "react-dom": "16.14 - 18",
-        "react-responsive": "^9.0.2",
-        "react-spring": "^9.6.1"
+        "react-spring": "^9.6.1",
+        "@trrack/core": "^1.0.0",
+        "d3": "^7.8.0",
+        "@mantine/core": "^5.10.5",
+        "@mantine/hooks": "^5.10.5"
     },
     "devDependencies": {
         "@types/d3": "^7.4.0",
@@ -25,12 +24,12 @@
         "@types/react-dom": "16.9.18 - 18"
     },
     "peerDependencies": {
-        "@mantine/core": "^5.10.5",
-        "@mantine/hooks": "^5.10.5",
         "@trrack/core": "^1.0.0",
         "d3": "^7.8.0",
         "react": "16.8 - 18",
-        "react-dom": "16.14 - 18"
+        "react-dom": "16.14 - 18",
+        "@mantine/core": "^5.10.5",
+        "@mantine/hooks": "^5.10.5"
     },
     "exports": {
         ".": {
