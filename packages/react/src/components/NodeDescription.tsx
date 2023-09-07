@@ -113,6 +113,7 @@ export function NodeDescription<T, S extends string>({
                                 overflow: 'hidden',
                                 textOverflow: 'ellipsis',
                                 whiteSpace: 'nowrap',
+                                color: config.isDarkMode ? 'white' : 'black',
                             }}
                         >
                             {node.label}

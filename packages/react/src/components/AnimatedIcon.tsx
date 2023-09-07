@@ -2,7 +2,7 @@ import { Stack, Text, Tooltip } from '@mantine/core';
 import { NodeId, ProvenanceNode } from '@trrack/core';
 import { useMemo } from 'react';
 import { animated, easings, useTransition } from 'react-spring';
-import { defaultIcon } from '../utils/IconConfig';
+import { defaultDarkmodeIcon, defaultIcon } from '../utils/IconConfig';
 import { ProvVisConfig } from './ProvVis';
 import { StratifiedMap } from './useComputeNodePosition';
 
@@ -68,7 +68,9 @@ export function AnimatedIcon<T, S extends string>({
 
     const icon = useMemo(() => {
         const currentIconConfig = config.iconConfig?.[node.event];
-        const currDefaultIcon = defaultIcon(colorMap[node.event]);
+        const currDefaultIcon = config.isDarkMode
+            ? defaultDarkmodeIcon(colorMap[node.event])
+            : defaultIcon(colorMap[node.event]);
 
         if (currentIconConfig && currentIconConfig.glyph) {
             if (node.id === currentNode && currentIconConfig.currentGlyph) {
@@ -94,7 +96,15 @@ export function AnimatedIcon<T, S extends string>({
         }
 
         return currDefaultIcon.glyph(node);
-    }, [config.iconConfig, currentNode, isHover, width, colorMap, node]);
+    }, [
+        config.iconConfig,
+        config.isDarkMode,
+        node,
+        colorMap,
+        currentNode,
+        isHover,
+        width,
+    ]);
 
     return transitions((style) => {
         return (

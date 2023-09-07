@@ -12,7 +12,11 @@ const config: any = {
         '../src/**/*.stories.mdx',
         '../src/**/*.stories.@(js|jsx|ts|tsx)',
     ],
-    addons: ['@storybook/addon-essentials', ...(rootMain.addons || [])],
+    addons: [
+        'storybook-dark-mode',
+        '@storybook/addon-essentials',
+        ...(rootMain.addons || []),
+    ],
     async viteFinal(config: any) {
         return mergeConfig(config, {
             plugins: [

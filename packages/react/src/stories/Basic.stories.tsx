@@ -36,6 +36,32 @@ export const LinearExample: Story = {
     },
 };
 
+export const DarkMode: Story = {
+    render: (props) => {
+        const { trrack: t, actions } = useTrrack();
+
+        useEffect(() => {
+            t.apply('Add task', actions.addTask({ id: '1', complete: false }));
+            t.apply('Add task', actions.addTask({ id: '2', complete: false }));
+            t.apply('Add task', actions.addTask({ id: '3', complete: false }));
+            t.apply('Add task', actions.addTask({ id: '4', complete: false }));
+            t.apply('Add task', actions.addTask({ id: '5', complete: false }));
+            t.apply('Add task', actions.addTask({ id: '6', complete: false }));
+            t.apply('Add task', actions.addTask({ id: '7', complete: false }));
+        }, []);
+
+        return t ? (
+            <Graph
+                config={{ ...props, isDarkMode: true }}
+                actions={actions}
+                trrack={t}
+            />
+        ) : (
+            <div></div>
+        );
+    },
+};
+
 export const OneBranch: Story = {
     render: (props) => {
         const { trrack: t, actions } = useTrrack();
