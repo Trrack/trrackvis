@@ -105,6 +105,7 @@ export function NodeDescription<T, S extends string>({
                                 width: `calc(100% - ${config.marginRight}px)`,
                                 display: 'flex',
                                 flexDirection: 'row',
+                                color: config.isDarkMode ? 'white' : 'black',
                             }}
                         >
                             <div
