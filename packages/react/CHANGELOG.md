@@ -1,3 +1,18 @@
+# [1.4.0](https://github.com/Trrack/trrackvis/compare/@trrack/vis-react@1.3.0...@trrack/vis-react@1.4.0) (2023-09-08)
+
+
+### Bug Fixes
+
+* **react:** fixing text positioning ([bddb665](https://github.com/Trrack/trrackvis/commit/bddb6656be10270211883df02afa840dc20c4300))
+* **react:** merging ([5ebe313](https://github.com/Trrack/trrackvis/commit/5ebe313646019d8697f4b295e4f7f53802c6d9a9))
+
+
+### Features
+
+* **react:** adding "nodeExtra" option ([d1a8456](https://github.com/Trrack/trrackvis/commit/d1a845668f3b5bc3d0ba77f2e979bd2f3d4aa5a4))
+* **react:** adding dark mode ([42c6eb4](https://github.com/Trrack/trrackvis/commit/42c6eb4ff4a8b66f53bdd93bc739be80527513e2))
+* **react:** changing to lighter black ([c62a843](https://github.com/Trrack/trrackvis/commit/c62a843e6a07cf65c4d726f994fc1ea4ef9aa4b3))
+
 # [1.4.0-beta.1](https://github.com/Trrack/trrackvis/compare/@trrack/vis-react@1.3.0...@trrack/vis-react@1.4.0-beta.1) (2023-09-07)
 
 
