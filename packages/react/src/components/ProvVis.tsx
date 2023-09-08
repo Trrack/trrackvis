@@ -28,6 +28,8 @@ export interface ProvVisConfig<T, S extends string> {
     annotateNode: ((id: NodeId, annotation: string) => void) | null;
     getAnnotation: (id: NodeId) => string;
     isBookmarked: (id: NodeId) => boolean;
+    isDarkMode: boolean;
+    nodeExtra: Record<S, React.ReactElement | null>;
 }
 
 const defaultConfig: ProvVisConfig<any, any> = {
@@ -47,6 +49,8 @@ const defaultConfig: ProvVisConfig<any, any> = {
     annotateNode: null,
     getAnnotation: () => '',
     isBookmarked: () => false,
+    isDarkMode: false,
+    nodeExtra: {},
 };
 
 export function ProvVis<T, S extends string>({

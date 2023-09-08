@@ -2,7 +2,7 @@ import { Stack, Text, Tooltip } from '@mantine/core';
 import { NodeId, ProvenanceNode } from '@trrack/core';
 import { useMemo } from 'react';
 import { animated, easings, useTransition } from 'react-spring';
-import { defaultIcon } from '../utils/IconConfig';
+import { defaultDarkmodeIcon, defaultIcon } from '../utils/IconConfig';
 import { ProvVisConfig } from './ProvVis';
 import { StratifiedMap } from './useComputeNodePosition';
 
@@ -19,6 +19,7 @@ export function AnimatedIcon<T, S extends string>({
     setHover,
     colorMap,
     xOffset,
+    extraHeight,
 }: {
     width: number;
     depth: number;
@@ -32,6 +33,7 @@ export function AnimatedIcon<T, S extends string>({
     setHover: (node: NodeId | null) => void;
     colorMap: Record<S | 'Root', string>;
     xOffset: number;
+    extraHeight: number;
 }) {
     const transitions = useTransition([node], {
         config: {
@@ -61,14 +63,16 @@ export function AnimatedIcon<T, S extends string>({
         update: {
             opacity: 1,
             transform: `translate(${-width * config.gutter + xOffset} , ${
-                depth * config.verticalSpace + yOffset
+                depth * config.verticalSpace + yOffset + extraHeight
             })`,
         },
     });
 
     const icon = useMemo(() => {
         const currentIconConfig = config.iconConfig?.[node.event];
-        const currDefaultIcon = defaultIcon(colorMap[node.event]);
+        const currDefaultIcon = config.isDarkMode
+            ? defaultDarkmodeIcon(colorMap[node.event])
+            : defaultIcon(colorMap[node.event]);
 
         if (currentIconConfig && currentIconConfig.glyph) {
             if (node.id === currentNode && currentIconConfig.currentGlyph) {
@@ -94,7 +98,15 @@ export function AnimatedIcon<T, S extends string>({
         }
 
         return currDefaultIcon.glyph(node);
-    }, [config.iconConfig, currentNode, isHover, width, colorMap, node]);
+    }, [
+        config.iconConfig,
+        config.isDarkMode,
+        node,
+        colorMap,
+        currentNode,
+        isHover,
+        width,
+    ]);
 
     return transitions((style) => {
         return (

@@ -24,10 +24,14 @@ export function Tree<T, S extends string>({
 }) {
     const [hoverNode, setHoverNode] = useState<NodeId | null>(null);
     const [xPan, setXPan] = useState<number>(0);
+    const [extraHeight, setExtraHeight] = useState<number>(0);
     const scrollRef = useRef<HTMLDivElement>(null);
+
     useEffect(() => {
         setXPan(0);
     }, [currentNode]);
+
+    console.log(extraHeight);
 
     const maxWidth = useMemo(() => {
         return Math.max(
@@ -109,7 +113,7 @@ export function Tree<T, S extends string>({
             string
         >;
 
-        innerColorMap.Root = 'black';
+        innerColorMap.Root = config.isDarkMode ? 'white' : 'black';
 
         Object.values(nodes).forEach((node) => {
             if (!innerColorMap[node.data.event]) {
@@ -120,7 +124,7 @@ export function Tree<T, S extends string>({
         });
 
         return innerColorMap;
-    }, [nodes]);
+    }, [nodes, config.isDarkMode]);
 
     // render the descriptions for the backbone nodes
     const descriptions = useMemo(() => {
@@ -129,7 +133,14 @@ export function Tree<T, S extends string>({
             .map((node) => {
                 return (
                     <NodeDescription
+                        isCurrent={node.id === currentNode}
                         key={node.id}
+                        extraHeight={
+                            node.depth > nodes[currentNode].depth
+                                ? extraHeight
+                                : 0
+                        }
+                        setExtraHeight={setExtraHeight}
                         config={config}
                         depth={node.depth}
                         node={node.data}
@@ -144,7 +155,7 @@ export function Tree<T, S extends string>({
                     />
                 );
             });
-    }, [nodes, currentNode, hoverNode, colorMap, config]);
+    }, [nodes, currentNode, extraHeight, config, hoverNode, colorMap]);
 
     // render edges for every node
     const edges = useMemo(() => {
@@ -178,12 +189,20 @@ export function Tree<T, S extends string>({
                             ? config.nodeWidthShown
                             : maxWidth) * config.gutter
                     }
-                    y1Offset={0}
-                    y2Offset={0}
+                    y1Offset={
+                        link.source.depth > nodes[currentNode].depth
+                            ? extraHeight
+                            : 0
+                    }
+                    y2Offset={
+                        link.target.depth > nodes[currentNode].depth
+                            ? extraHeight
+                            : 0
+                    }
                 />
             );
         });
-    }, [links, config, maxWidth, nodes]);
+    }, [links, nodes, config, maxWidth, currentNode, extraHeight]);
 
     // render icons for every node
     const nodeIcons = useMemo(() => {
@@ -201,6 +220,9 @@ export function Tree<T, S extends string>({
                         config.changeCurrent(node.id!);
                     }}
                     nodes={nodes}
+                    extraHeight={
+                        node.depth > nodes[currentNode].depth ? extraHeight : 0
+                    }
                     config={config}
                     node={node.data}
                     currentNode={currentNode}
@@ -218,7 +240,15 @@ export function Tree<T, S extends string>({
                 />
             );
         });
-    }, [nodes, currentNode, config, hoverNode, colorMap, maxWidth]);
+    }, [
+        nodes,
+        currentNode,
+        extraHeight,
+        config,
+        hoverNode,
+        colorMap,
+        maxWidth,
+    ]);
 
     // // apply zoom/panning
     useEffect(() => {
@@ -300,7 +330,8 @@ export function Tree<T, S extends string>({
                         overflow: 'hidden',
                         height: `${
                             (maxHeight + 1) * config.verticalSpace +
-                            config.marginTop
+                            config.marginTop +
+                            extraHeight
                         }px`,
                         width: `${
                             config.nodeWidthShown * config.gutter +
