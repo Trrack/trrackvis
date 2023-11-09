@@ -106,7 +106,13 @@ export function NodeDescription<T, S extends string>({
                     >
                         <div
                             style={{
-                                width: `calc(100% - ${config.marginRight}px)`,
+                                width: `calc(100% - ${config.marginRight}px - ${
+                                    isHover || isAnnotationOpen
+                                        ? 50
+                                        : config.isBookmarked(node.id)
+                                        ? 25
+                                        : 0
+                                }px)`,
                                 display: 'flex',
                                 flexDirection: 'row',
                                 color: config.isDarkMode ? 'white' : 'black',
@@ -137,7 +143,7 @@ export function NodeDescription<T, S extends string>({
                                 {isStateNode(node) ? (
                                     <p
                                         style={{
-                                            maxWidth: `${config.labelWidth}px`,
+                                            width: '100%',
                                             margin: 0,
                                             overflow: 'hidden',
                                             textOverflow: 'ellipsis',
