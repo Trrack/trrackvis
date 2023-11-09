@@ -80,7 +80,11 @@ export function NodeDescription<T, S extends string>({
             onMouseLeave={() => setHover(null)}
         >
             <Stack style={{ height: '100%' }} spacing={0}>
-                <Group noWrap style={{ height: config.verticalSpace }}>
+                <Group
+                    spacing={2}
+                    noWrap
+                    style={{ height: config.verticalSpace }}
+                >
                     <Tooltip
                         position="top-start"
                         openDelay={200}

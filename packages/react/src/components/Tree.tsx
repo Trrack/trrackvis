@@ -31,8 +31,6 @@ export function Tree<T, S extends string>({
         setXPan(0);
     }, [currentNode]);
 
-    console.log(extraHeight);
-
     const maxWidth = useMemo(() => {
         return Math.max(
             ...Object.values(nodes).map((node) => (node.width ? node.width : 0))
