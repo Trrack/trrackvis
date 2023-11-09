@@ -80,7 +80,11 @@ export function NodeDescription<T, S extends string>({
             onMouseLeave={() => setHover(null)}
         >
             <Stack style={{ height: '100%' }} spacing={0}>
-                <Group noWrap style={{ height: config.verticalSpace }}>
+                <Group
+                    spacing={2}
+                    noWrap
+                    style={{ height: config.verticalSpace }}
+                >
                     <Tooltip
                         position="top-start"
                         openDelay={200}
@@ -102,7 +106,13 @@ export function NodeDescription<T, S extends string>({
                     >
                         <div
                             style={{
-                                width: `calc(100% - ${config.marginRight}px)`,
+                                width: `calc(100% - ${config.marginRight}px - ${
+                                    isHover || isAnnotationOpen
+                                        ? 50
+                                        : config.isBookmarked(node.id)
+                                        ? 25
+                                        : 0
+                                }px)`,
                                 display: 'flex',
                                 flexDirection: 'row',
                                 color: config.isDarkMode ? 'white' : 'black',
@@ -133,7 +143,7 @@ export function NodeDescription<T, S extends string>({
                                 {isStateNode(node) ? (
                                     <p
                                         style={{
-                                            maxWidth: `${config.labelWidth}px`,
+                                            width: '100%',
                                             margin: 0,
                                             overflow: 'hidden',
                                             textOverflow: 'ellipsis',

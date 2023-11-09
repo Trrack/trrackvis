@@ -13,6 +13,10 @@ type Story = StoryObj<ProvVisStoryProps>;
 
 export default {
     component: Graph,
+    parameters: {
+        docs: { disable: true, hidden: true },
+        previewTabs: { 'storybook/docs/panel': { hidden: true } },
+    },
 } as Meta<typeof Graph>;
 
 export const LinearExample: Story = {
