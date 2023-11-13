@@ -69,7 +69,6 @@ export function NodeDescription<T, S extends string>({
                 cursor: 'pointer',
                 position: 'absolute',
                 height: config.verticalSpace * 2,
-                alignContent: 'center',
                 flexWrap: 'wrap',
                 width: `100%`,
             }}
@@ -185,7 +184,7 @@ export function NodeDescription<T, S extends string>({
                 </Group>
                 {isCurrent ? (
                     <animated.div style={{ ...extraNodeOpacity }} ref={ref}>
-                        {config.nodeExtra[node.event]}
+                        {config.nodeExtra[node.event] || config.nodeExtra['*']}
                     </animated.div>
                 ) : null}
             </Stack>

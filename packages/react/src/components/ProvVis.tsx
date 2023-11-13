@@ -29,7 +29,7 @@ export interface ProvVisConfig<T, S extends string> {
     getAnnotation: (id: NodeId) => string;
     isBookmarked: (id: NodeId) => boolean;
     isDarkMode: boolean;
-    nodeExtra: Record<S, React.ReactElement | null>;
+    nodeExtra: Partial<Record<S | '*', React.ReactElement | null>>;
 }
 
 const defaultConfig: ProvVisConfig<any, any> = {
