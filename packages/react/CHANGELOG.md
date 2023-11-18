@@ -1,3 +1,16 @@
+# [1.5.0-alpha.1](https://github.com/Trrack/trrackvis/compare/@trrack/vis-react@1.4.0...@trrack/vis-react@1.5.0-alpha.1) (2023-11-18)
+
+
+### Bug Fixes
+
+* **react:** fixing alignment ([08d981e](https://github.com/Trrack/trrackvis/commit/08d981e4b028e94041e1c250bc1bc075b3c31c1b))
+* **react:** merge ([0c019e3](https://github.com/Trrack/trrackvis/commit/0c019e308ab5efa3bcef3697431812f0645bdd78))
+
+
+### Features
+
+* **react:** adding * as option to node extra ([6923721](https://github.com/Trrack/trrackvis/commit/6923721001981026b411b2822a3506e520790589)), closes [#44](https://github.com/Trrack/trrackvis/issues/44) [#43](https://github.com/Trrack/trrackvis/issues/43) [#42](https://github.com/Trrack/trrackvis/issues/42)
+
 # [1.4.0-alpha.3](https://github.com/Trrack/trrackvis/compare/@trrack/vis-react@1.4.0-alpha.2...@trrack/vis-react@1.4.0-alpha.3) (2023-08-09)
 
 ### Features
