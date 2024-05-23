@@ -3,7 +3,7 @@ import { NodeId, ProvenanceNode } from '@trrack/core';
 import { useMemo } from 'react';
 import { animated, easings, useTransition } from 'react-spring';
 import { defaultDarkmodeIcon, defaultIcon } from '../utils/IconConfig';
-import { ProvVisConfig } from './ProvVis';
+import { HoverCallback, ProvVisConfig } from './ProvVis';
 import { StratifiedMap } from './useComputeNodePosition';
 
 export function AnimatedIcon<T, S extends string>({
@@ -30,7 +30,7 @@ export function AnimatedIcon<T, S extends string>({
     nodes: StratifiedMap<T, S>;
     currentNode: NodeId;
     isHover: boolean;
-    setHover: (node: NodeId | null) => void;
+    setHover: HoverCallback<T, S>;
     colorMap: Record<S | 'Root', string>;
     xOffset: number;
     extraHeight: number;
@@ -116,12 +116,12 @@ export function AnimatedIcon<T, S extends string>({
                 onClick={onClick}
                 className="provenance-node"
                 data-node-id={node.id}
-                onMouseOver={() => {
+                onMouseOver={(e) => {
                     if (!style.transform.isAnimating) {
-                        setHover(node.id);
+                        setHover(node, e);
                     }
                 }}
-                onMouseOut={() => setHover(null)}
+                onMouseOut={(e) => setHover(null, e)}
             >
                 <Tooltip
                     position="top-start"

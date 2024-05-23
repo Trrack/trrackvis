@@ -1,6 +1,13 @@
 import { NodeId, ProvenanceNode } from '@trrack/core';
 import * as d3 from 'd3';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import {
+    useEffect,
+    useMemo,
+    useRef,
+    useState,
+    MouseEvent,
+    useCallback,
+} from 'react';
 import { animated, easings, useSpring } from 'react-spring';
 import { AnimatedIcon } from './AnimatedIcon';
 import { AnimatedLine } from './AnimatedLine';
@@ -22,7 +29,7 @@ export function Tree<T, S extends string>({
     config: ProvVisConfig<T, S>;
     currentNode: NodeId;
 }) {
-    const [hoverNode, setHoverNode] = useState<NodeId | null>(null);
+    const [hoverNodeId, setHoverNodeId] = useState<NodeId | null>(null);
     const [xPan, setXPan] = useState<number>(0);
     const [extraHeight, setExtraHeight] = useState<number>(0);
     const scrollRef = useRef<HTMLDivElement>(null);
@@ -30,6 +37,22 @@ export function Tree<T, S extends string>({
     useEffect(() => {
         setXPan(0);
     }, [currentNode]);
+
+    /**
+     * Sets the hovered node and calls the hover callbacks
+     * @param node the node to set as hovered
+     * @param event the onMouseOver event that triggered the hover
+     */
+    const setHoverNode = useCallback(
+        (node: ProvenanceNode<T, S> | null, event: MouseEvent | null) => {
+            setHoverNodeId(node?.id ?? null);
+            if (node)
+                config.nodeHoverCallbacks.forEach((callback) => {
+                    callback(node, event);
+                });
+        },
+        [config.nodeHoverCallbacks]
+    );
 
     const maxWidth = useMemo(() => {
         return Math.max(
@@ -144,16 +167,25 @@ export function Tree<T, S extends string>({
                         node={node.data}
                         currentNode={currentNode}
                         onClick={() => config.changeCurrent(node.id!)}
-                        isHover={node.id === hoverNode}
-                        setHover={(currNode: NodeId | null) =>
-                            setHoverNode(currNode)
-                        }
+                        isHover={node.id === hoverNodeId}
+                        setHover={(
+                            currNode: ProvenanceNode<T, S> | null,
+                            e: MouseEvent | null
+                        ) => setHoverNode(currNode, e)}
                         colorMap={colorMap}
                         yOffset={0}
                     />
                 );
             });
-    }, [nodes, currentNode, extraHeight, config, hoverNode, colorMap]);
+    }, [
+        nodes,
+        currentNode,
+        extraHeight,
+        config,
+        hoverNodeId,
+        colorMap,
+        setHoverNode,
+    ]);
 
     // render edges for every node
     const edges = useMemo(() => {
@@ -213,7 +245,7 @@ export function Tree<T, S extends string>({
                     onClick={() => {
                         // this if is just to avoid some annoying hovers that would flash quickly when you switched nodes
                         if (node.width !== 0) {
-                            setHoverNode(null);
+                            setHoverNode(null, null);
                         }
                         config.changeCurrent(node.id!);
                     }}
@@ -224,10 +256,8 @@ export function Tree<T, S extends string>({
                     config={config}
                     node={node.data}
                     currentNode={currentNode}
-                    isHover={node.id === hoverNode}
-                    setHover={(currNode: NodeId | null) =>
-                        setHoverNode(currNode)
-                    }
+                    isHover={node.id === hoverNodeId}
+                    setHover={(currNode, e) => setHoverNode(currNode, e)}
                     colorMap={colorMap}
                     xOffset={
                         (maxWidth > config.nodeWidthShown
@@ -243,9 +273,10 @@ export function Tree<T, S extends string>({
         currentNode,
         extraHeight,
         config,
-        hoverNode,
+        hoverNodeId,
         colorMap,
         maxWidth,
+        setHoverNode,
     ]);
 
     // // apply zoom/panning

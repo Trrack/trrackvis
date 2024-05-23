@@ -1,5 +1,5 @@
-import { NodeId, Nodes } from '@trrack/core';
-import { useMemo } from 'react';
+import { NodeId, Nodes, ProvenanceNode } from '@trrack/core';
+import { useMemo, MouseEvent } from 'react';
 import { IconConfig } from '../utils/IconConfig';
 import { Tree } from './Tree';
 import { useComputeNodePosition } from './useComputeNodePosition';
@@ -10,6 +10,14 @@ interface ProvVisProps<T, S extends string> {
     nodeMap: Nodes<T, S>;
     config?: Partial<ProvVisConfig<T, S>>;
 }
+
+/**
+ * Callback to fire when a node is hoveredl
+ */
+export type HoverCallback<T, S extends string> = (
+    node: ProvenanceNode<T, S> | null,
+    event: MouseEvent | null
+) => void;
 
 export interface ProvVisConfig<T, S extends string> {
     gutter: number;
@@ -30,6 +38,12 @@ export interface ProvVisConfig<T, S extends string> {
     isBookmarked: (id: NodeId) => boolean;
     isDarkMode: boolean;
     nodeExtra: Partial<Record<S | '*', React.ReactElement | null>>;
+    /**
+     * Callbacks to fire when a node is hovered
+     * @param node The node that is hovered
+     * @param event The onMouseOver event that triggered the hover
+     */
+    nodeHoverCallbacks: HoverCallback<T, S>[];
 }
 
 const defaultConfig: ProvVisConfig<any, any> = {
@@ -51,6 +65,7 @@ const defaultConfig: ProvVisConfig<any, any> = {
     isBookmarked: () => false,
     isDarkMode: false,
     nodeExtra: {},
+    nodeHoverCallbacks: [],
 };
 
 export function ProvVis<T, S extends string>({

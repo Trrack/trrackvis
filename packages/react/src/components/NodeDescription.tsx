@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { animated, easings, useSpring } from 'react-spring';
 import { AnnotationButton } from './AnnotationButton';
 import { BookmarkButton } from './BookmarkButton';
-import { ProvVisConfig } from './ProvVis';
+import { HoverCallback, ProvVisConfig } from './ProvVis';
 import { useResizeObserver } from '@mantine/hooks';
 
 export function NodeDescription<T, S extends string>({
@@ -27,7 +27,7 @@ export function NodeDescription<T, S extends string>({
     currentNode: NodeId;
     onClick: () => void;
     isHover: boolean;
-    setHover: (node: NodeId | null) => void;
+    setHover: HoverCallback<T, S>;
     colorMap: Record<S | 'Root', string>;
     isCurrent: boolean;
     extraHeight: number;
@@ -75,8 +75,8 @@ export function NodeDescription<T, S extends string>({
             className="node-description"
             onClick={onClick}
             data-node-id={node.id}
-            onMouseEnter={() => setHover(node.id)}
-            onMouseLeave={() => setHover(null)}
+            onMouseEnter={(e) => setHover(node, e)}
+            onMouseLeave={(e) => setHover(null, e)}
         >
             <Stack style={{ height: '100%' }} spacing={0}>
                 <Group
